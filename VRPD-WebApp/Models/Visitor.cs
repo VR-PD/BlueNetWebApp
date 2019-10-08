@@ -7,16 +7,15 @@ namespace VRPD_WebApp.Models
     {
         public static List<Visitor> Visitors = new List<Visitor>();
 
-        public Visitor(string iD)
+        public Visitor(string key)
         {
-            ID = iD;
+            Key = key;
             Time = DateTime.Now;
             IsConfirmed = false;
         }
 
-        public string ID { get; }
         public bool IsConfirmed { get; set; }
-
+        public string Key { get; }
         public DateTime Time { get; }
     }
 }

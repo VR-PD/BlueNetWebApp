@@ -14,7 +14,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            string key = filterContext.HttpContext.Session[STATICS.VISITOR_ID_KEY] as string;
+            string key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as string;
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -22,6 +22,6 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(string key) => Visitor.Visitors.Find(v => v.ID == key)?.IsConfirmed ?? false;
+        private bool IsValid(string key) => Visitor.Visitors.Find(v => v.Key == key)?.IsConfirmed ?? false;
     }
 }

@@ -16,7 +16,7 @@ namespace VRPD_WebApp.Controllers
 
         public void Post([FromBody]string id)
         {
-            int i = Visitor.Visitors.FindIndex(v => v.ID == id);
+            int i = Visitor.Visitors.FindIndex(v => v.Key == id);
             if (i > -1)
                 Visitor.Visitors[i].IsConfirmed = true;
         }
