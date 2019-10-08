@@ -6,21 +6,19 @@ namespace VRPD_WebApp.Controllers
 {
     public class VisitorsController : ApiController
     {
-        private static readonly List<Visitor> visitors = new List<Visitor>();
-
         public static void AddVisitor(Visitor visitor)
         {
-            if (!visitors.Contains(visitor))
-                visitors.Add(visitor);
+            if (!Visitor.Visitors.Contains(visitor))
+                Visitor.Visitors.Add(visitor);
         }
 
-        public IEnumerable<Visitor> Get() => visitors;
+        public IEnumerable<Visitor> Get() => Visitor.Visitors;
 
         public void Post([FromBody]string id)
         {
-            int i = visitors.FindIndex(v => v.ID == id);
+            int i = Visitor.Visitors.FindIndex(v => v.ID == id);
             if (i > -1)
-                visitors[i].IsConfirmed = true;
+                Visitor.Visitors[i].IsConfirmed = true;
         }
     }
 }

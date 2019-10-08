@@ -1,21 +1,21 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using VRPD_WebApp.Models;
 
 namespace VRPD_WebApp.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            return Content("Index");
+            return View();
         }
 
         [HttpGet]
         public ActionResult Overview()
         {
-            return Content("Overview");
+            return View();
         }
     }
 }

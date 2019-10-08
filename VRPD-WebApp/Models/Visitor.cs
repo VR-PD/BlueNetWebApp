@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VRPD_WebApp.Models
 {
-    public class Visitor : IEquatable<Visitor>
+    public class Visitor
     {
+        public static List<Visitor> Visitors = new List<Visitor>();
+
         public Visitor(string iD)
         {
             ID = iD;
@@ -15,7 +18,5 @@ namespace VRPD_WebApp.Models
         public bool IsConfirmed { get; set; }
 
         public DateTime Time { get; }
-
-        public bool Equals(Visitor other) => ID == other.ID;
     }
 }
