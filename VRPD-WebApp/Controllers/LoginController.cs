@@ -21,7 +21,7 @@ namespace VRPD_WebApp.Controllers
             }
             ViewBag.ReturnUrl = ReturnUrl;
             if (ReturnUrl == null)
-                ViewBag.ReturnUrl = "/Home";
+                ViewBag.ReturnUrl = "/";
             return View();
         }
 
@@ -29,7 +29,7 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            Visitor.Visitors.RemoveAll(v => v.Key == Session[STATICS.VISITOR_KEY].ToString() && v.IsConfirmed);
+            Visitor.Visitors.RemoveAll(v => v.Key == Session[STATICS.VISITOR_KEY].ToString());
             Session[STATICS.VISITOR_KEY] = null;
             return RedirectToActionPermanent("Index");
         }
