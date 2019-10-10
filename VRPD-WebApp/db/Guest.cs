@@ -19,7 +19,7 @@ namespace VRPD_WebApp.db
         public Guest()
         {
             byte[] b = new byte[16];
-            new RNGCryptoServiceProvider().GetBytes(b);
+            RandomNumberGenerator.Create().GetBytes(b);
             Keynum = Convert.ToBase64String(b);
             Visited = DateTime.UtcNow;
             this.IsConfirmed = false;
