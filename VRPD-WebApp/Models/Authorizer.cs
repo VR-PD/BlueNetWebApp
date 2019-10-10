@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
+using VRPD_WebApp.db;
 
 namespace VRPD_WebApp.Models
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
     public class Authorizer : FilterAttribute, IAuthorizationFilter
     {
+        private VrpdContext db = new VrpdContext();
+
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             bool skipAuthorization = filterContext.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true)
@@ -22,6 +25,10 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(string key) => Visitor.Visitors.Find(v => v.Key == key)?.IsConfirmed ?? false;
+        private bool IsValid(string key)
+        {
+            var q = db.Guest.SqlQuery("SELECT * FROM Guest WHERE Keynum=@p0", key);
+            return q.AnyAsync(g => g.IsConfirmed).Result;
+        }
     }
 }
