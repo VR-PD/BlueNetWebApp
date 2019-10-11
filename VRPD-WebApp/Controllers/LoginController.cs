@@ -19,6 +19,7 @@ namespace VRPD_WebApp.Controllers
                 db.SaveChanges();
 
                 Session[STATICS.VISITOR_KEY] = g.Keynum;
+                Session[STATICS.VISITOR_KEY_STR] = Convert.ToBase64String(g.Keynum);
             }
             ViewBag.ReturnUrl = ReturnUrl;
             if (ReturnUrl == null)
@@ -30,7 +31,6 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            Visitor.Visitors.RemoveAll(v => v.Key == Session[STATICS.VISITOR_KEY].ToString());
             Session[STATICS.VISITOR_KEY] = null;
             return RedirectToActionPermanent("Index");
         }

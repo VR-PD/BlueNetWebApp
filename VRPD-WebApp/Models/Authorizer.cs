@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Web.Mvc;
 using VRPD_WebApp.db;
 
@@ -17,7 +19,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            string key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as string;
+            byte[] key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as byte[];
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -25,10 +27,12 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(string key)
+        private bool IsValid(byte[] key)
         {
-            var q = db.Guest.SqlQuery("SELECT * FROM Guest WHERE Keynum=@p0", key);
-            return q.AnyAsync(g => g.IsConfirmed).Result;
+            if (key == null)
+                return false;
+
+            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.Count() == key.Count() && g.Keynum.Intersect(key).Count() == g.Keynum.Count())?.IsConfirmed ?? false;
         }
     }
 }
