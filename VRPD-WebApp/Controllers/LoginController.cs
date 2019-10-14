@@ -13,9 +13,10 @@ namespace VRPD_WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Index(string ReturnUrl)
         {
+            Guest g = null;
             if (Session[STATICS.VISITOR_KEY] == null)
             {
-                Guest g = db.Guest.Add(new Guest());
+                g = db.Guest.Add(new Guest());
                 db.SaveChanges();
 
                 Session[STATICS.VISITOR_KEY] = g.Keynum;
@@ -24,7 +25,7 @@ namespace VRPD_WebApp.Controllers
             ViewBag.ReturnUrl = ReturnUrl;
             if (ReturnUrl == null)
                 ViewBag.ReturnUrl = "/";
-            return View();
+            return View(g);
         }
 
         [HttpGet]
