@@ -14,7 +14,7 @@ namespace VRPD_WebApp.Controllers
         public ActionResult Index(string ReturnUrl)
         {
             Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
-            if (key == null || (DateTime.Now - key.Created).TotalSeconds < 30)
+            if (key == null || (DateTime.Now - key.Created).TotalSeconds > 30)
             {
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
