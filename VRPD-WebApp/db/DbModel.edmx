@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Keynum" Type="varchar" MaxLength="26" Nullable="false" />
+          <Property Name="Keynum" Type="binary" MaxLength="16" Nullable="false" />
           <Property Name="Visited" Type="datetime" Nullable="false" />
           <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
@@ -27,11 +27,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Keynum" Type="String" MaxLength="26" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
           <Property Name="Visited" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" DefaultValue="false" />
         </EntityType>
-        <EntityContainer Name="VrpdContext2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VrpdContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Guest" EntityType="Self.Guest" />
         </EntityContainer>
       </Schema>
@@ -39,7 +39,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="VrpdContext2">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="VrpdContext">
           <EntitySetMapping Name="Guest">
             <EntityTypeMapping TypeName="DbModel.Guest">
               <MappingFragment StoreEntitySet="Guest">

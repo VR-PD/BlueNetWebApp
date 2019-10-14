@@ -18,15 +18,14 @@ namespace VRPD_WebApp.db
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Guest()
         {
-            byte[] b = new byte[16];
-            RandomNumberGenerator.Create().GetBytes(b);
-            Keynum = Convert.ToBase64String(b);
+            Keynum = new byte[16];
+            new RNGCryptoServiceProvider().GetBytes(Keynum);
             Visited = DateTime.UtcNow;
             this.IsConfirmed = false;
         }
     
         public int Id { get; set; }
-        public string Keynum { get; set; }
+        public byte[] Keynum { get; set; }
         public System.DateTime Visited { get; set; }
         public bool IsConfirmed { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
@@ -14,8 +15,11 @@ namespace VRPD_WebApp.Controllers
 
         public void Post([FromBody]byte[] raw)
         {
-            string s = Convert.ToBase64String(raw);
-            Guest guest = db.Guest.First(g => g.Keynum == s);
+            IEnumerable<byte> b = raw.AsEnumerable();
+            List<Guest> all = db.Guest.ToList();
+
+            Guest guest = all.FirstOrDefault(g => b.Intersect(g.Keynum).Count() == b.Count());
+
             if (guest != null)
             {
                 guest.IsConfirmed = true;
