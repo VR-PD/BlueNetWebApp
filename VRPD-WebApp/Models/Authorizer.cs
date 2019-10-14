@@ -19,7 +19,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            byte[] key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as byte[];
+            Keynum key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as Keynum;
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -27,12 +27,12 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(byte[] key)
+        private bool IsValid(Keynum key)
         {
             if (key == null)
                 return false;
 
-            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.Count() == key.Count() && g.Keynum.Intersect(key).Count() == g.Keynum.Count())?.IsConfirmed ?? false;
+            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.Count() == key.Key.Count() && g.Keynum.Intersect(key.Key).Count() == g.Keynum.Count())?.IsConfirmed ?? false;
         }
     }
 }

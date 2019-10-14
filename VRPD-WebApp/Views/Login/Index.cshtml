@@ -1,5 +1,4 @@
-﻿@model VRPD_WebApp.db.Guest
-@{
+﻿@{
     Layout = null;
 }
 
@@ -13,8 +12,7 @@
 <body>
     <div>
         <h2>Login</h2>
-        <p>Code: @Session[STATICS.VISITOR_KEY_STR]</p>
-        <p>@Convert.ToBase64String(Model.Keynum)</p>
+        <p>Code: @(((VRPD_WebApp.Models.Keynum)Session[STATICS.VISITOR_KEY]).ToString)</p>
 
         <input type="button" value="Ga Terug" onclick="location.href='@ViewBag.ReturnUrl'" />
     </div>
