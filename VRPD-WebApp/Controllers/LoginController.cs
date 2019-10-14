@@ -21,9 +21,7 @@ namespace VRPD_WebApp.Controllers
 
                 Session[STATICS.VISITOR_KEY] = new Keynum(g.Keynum, g.Visited);
             }
-            ViewBag.ReturnUrl = ReturnUrl;
-            if (ReturnUrl == null)
-                ViewBag.ReturnUrl = "/";
+            ViewBag.ReturnUrl = "/";
             return View();
         }
 
