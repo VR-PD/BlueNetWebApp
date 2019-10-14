@@ -11,10 +11,11 @@ namespace VRPD_WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(string ReturnUrl)
+        [OutputCache(Duration = 0)]
+        public ActionResult Index()
         {
             Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
-            if (key == null || (DateTime.Now - key.Created).TotalSeconds > 30)
+            if (key == null || (DateTime.UtcNow - key.Created).TotalSeconds > 30)
             {
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();

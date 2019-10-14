@@ -18,7 +18,7 @@ namespace VRPD_WebApp.Controllers
             IEnumerable<byte> b = raw.AsEnumerable();
             List<Guest> all = db.Guest.ToList();
 
-            Guest guest = all.FirstOrDefault(g => b.Intersect(g.Keynum).Count() == b.Count());
+            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(b));
 
             if (guest != null)
             {
