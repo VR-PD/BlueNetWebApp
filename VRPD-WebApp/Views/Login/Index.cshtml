@@ -12,7 +12,8 @@
 <body>
     <div>
         <h2>Login</h2>
-        <p>Code: @(((VRPD_WebApp.Models.Keynum)Session[STATICS.VISITOR_KEY]).ToString)</p>
+        <p>@Session[STATICS.VISITOR_KEY_STR]</p>
+        <p><img src="@Url.Action("GetQrCode","Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" /></p>
 
         <input type="button" value="Ga Terug" onclick="location.href='@ViewBag.ReturnUrl'" />
     </div>
