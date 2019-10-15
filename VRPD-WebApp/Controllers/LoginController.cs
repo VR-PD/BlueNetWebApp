@@ -53,7 +53,7 @@ namespace VRPD_WebApp.Controllers
         public ActionResult Logout()
         {
             byte[] k = Session[STATICS.VISITOR_KEY] as byte[];
-            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k));
+            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.Count() == k.Count() && g.Keynum.Intersect(k).Count() == g.Keynum.Count());
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 
