@@ -33,7 +33,6 @@ namespace VRPD_WebApp.Models
                 return false;
 
             return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Key))?.IsConfirmed ?? false;
-            //return db.Guest.ToList().FirstOrDefault(g => g.Keynum.Count() == key.Key.Count() && g.Keynum.Intersect(key.Key).Count() == g.Keynum.Count())?.IsConfirmed ?? false;
         }
     }
 }

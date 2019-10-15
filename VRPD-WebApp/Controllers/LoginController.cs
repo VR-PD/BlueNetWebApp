@@ -35,7 +35,7 @@ namespace VRPD_WebApp.Controllers
             Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
             if (key == null || (DateTime.UtcNow - key.Created).TotalSeconds > 30)
             {
-                Guest g = db.Guest.Add(new Guest());
+                Guest g = db.Guest.Add(new Guest() { IsConfirmed = true });
                 db.SaveChanges();
                 key = new Keynum(g.Keynum, g.Visited);
                 Session[STATICS.VISITOR_KEY] = key;
@@ -52,8 +52,8 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            byte[] k = Session[STATICS.VISITOR_KEY] as byte[];
-            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.Count() == k.Count() && g.Keynum.Intersect(k).Count() == g.Keynum.Count());
+            Keynum k = Session[STATICS.VISITOR_KEY] as Keynum;
+            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.Key));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 
