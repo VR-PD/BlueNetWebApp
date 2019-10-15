@@ -17,7 +17,7 @@ namespace VRPD_WebApp.Controllers
         {
             Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(key.Key, QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(key.Key), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             var bitmapBytes = BitmapToBytes(qrCodeImage); //Convert bitmap into a byte array
