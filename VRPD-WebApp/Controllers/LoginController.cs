@@ -5,6 +5,8 @@ using VRPD_WebApp.Models;
 using QRCoder;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace VRPD_WebApp.Controllers
 {
@@ -50,6 +52,11 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
+            byte[] k = Session[STATICS.VISITOR_KEY] as byte[];
+            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k));
+            db.Guest.RemoveRange(r);
+            db.SaveChanges();
+
             Session[STATICS.VISITOR_KEY] = null;
             return RedirectToActionPermanent("Index");
         }
