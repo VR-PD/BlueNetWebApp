@@ -29,7 +29,7 @@ namespace VrpdScanner
                 {
                     scanPage.IsScanning = false;
 
-                    Requestor.Send(result.RawBytes);
+                    Requestor.Send(result.Text);
 
                     Device.BeginInvokeOnMainThread(() =>
                     {

@@ -10,10 +10,10 @@ namespace VrpdScanner
     {
         private const string url = "https://vrpd-webapp.azurewebsites.net/api/Guests";
 
-        public static IRestResponse Send(byte[] key)
+        public static IRestResponse Send(string key)
         {
-            var client = new RestClient(url);
-            var res = client.Execute(new RestRequest(Method.POST).AddJsonBody(key));
+            RestClient client = new RestClient(url);
+            IRestResponse res = client.Execute(new RestRequest(Method.POST).AddJsonBody(key));
             return res;
         }
     }
