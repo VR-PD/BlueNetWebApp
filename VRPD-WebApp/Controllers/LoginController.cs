@@ -35,7 +35,7 @@ namespace VRPD_WebApp.Controllers
             Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
             if (key == null || (DateTime.UtcNow - key.Created).TotalSeconds > 30)
             {
-                Guest g = db.Guest.Add(new Guest() { IsConfirmed = true });
+                Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
                 key = new Keynum(g.Keynum, g.Visited);
                 Session[STATICS.VISITOR_KEY] = key;
