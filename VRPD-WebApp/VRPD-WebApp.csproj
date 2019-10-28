@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Models\Authorizer.cs" />
     <Compile Include="App_Data\STATICS.cs" />
+    <Compile Include="Models\IQRData.cs" />
     <Compile Include="Models\Keynum.cs" />
     <Compile Include="Models\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

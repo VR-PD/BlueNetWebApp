@@ -19,7 +19,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            Keynum key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as Keynum;
+            IQRData key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as IQRData;
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -27,7 +27,7 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(Keynum key)
+        private bool IsValid(IQRData key)
         {
             if (key == null)
                 return false;

@@ -17,7 +17,7 @@ namespace VRPD_WebApp.Controllers
         [AllowAnonymous]
         public ActionResult GetQrCode()
         {
-            Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
+            IQRData key = Session[STATICS.VISITOR_KEY] as IQRData;
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(key.Key), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
@@ -32,13 +32,15 @@ namespace VRPD_WebApp.Controllers
         {
             #region Check key code
 
-            Keynum key = Session[STATICS.VISITOR_KEY] as Keynum;
-            if (key == null || (DateTime.UtcNow - key.Created).TotalSeconds > 30)
+            IQRData qRData = Session[STATICS.VISITOR_KEY] as IQRData;
+            if (qRData == null || (DateTime.UtcNow - qRData.Created).TotalSeconds > 30)
             {
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
-                key = new Keynum(g.Keynum, g.Visited);
-                Session[STATICS.VISITOR_KEY] = key;
+                qRData = new object { } as IQRData;
+                qRData.Key = g.Keynum;
+                qRData.Created = DateTime.UtcNow;
+                Session[STATICS.VISITOR_KEY] = qRData;
             }
 
             #endregion Check key code
@@ -56,7 +58,7 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            Keynum k = Session[STATICS.VISITOR_KEY] as Keynum;
+            IQRData k = Session[STATICS.VISITOR_KEY] as IQRData;
             IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.Key));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
