@@ -1,21 +1,24 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <div>
-        <h2>Login</h2>
-        <p>@Session[STATICS.VISITOR_KEY_STR]</p>
-        <p><img src="@Url.Action("GetQrCode","Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" /></p>
+    <div class="hor-center">
+        <div class="qr-container">
+            <img class="qr-login" src="@Url.Action("GetQrCode", "Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" />
 
-        <input type="button" value="Ga Terug" onclick="location.href='@ViewBag.ReturnUrl'" />
+            <input class="qr-login-btn qr-btn" type="button" value="Login" onclick="location.href='@ViewBag.ReturnUrl'" />
+            <input class="qr-app-btn qr-btn" type="button" value="Mobile App" />
+        </div>
     </div>
 </body>
 </html>

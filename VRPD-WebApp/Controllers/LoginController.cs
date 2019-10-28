@@ -21,7 +21,7 @@ namespace VRPD_WebApp.Controllers
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(key.Key), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            Bitmap qrCodeImage = qrCode.GetGraphic(10);
             var bitmapBytes = BitmapToBytes(qrCodeImage); //Convert bitmap into a byte array
             return new FileContentResult(bitmapBytes, "image/jpeg"); //Return as file result
         }
@@ -48,6 +48,10 @@ namespace VRPD_WebApp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Logout client by removing them from the database and deleting session data
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [OutputCache(Duration = 0)]
         public ActionResult Logout()

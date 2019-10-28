@@ -15,3 +15,38 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.hor-center {
+    display: flex;
+    justify-content: center;
+}
+
+.qr-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.qr-login {
+}
+
+.qr-btn {
+    background-color: #1170DC;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.qr-login-btn {
+    align-self: flex-start;
+}
+
+.qr-app-btn {
+    align-self: flex-end;
+}
