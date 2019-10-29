@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web.Mvc;
@@ -19,7 +20,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            IQRData key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as IQRData;
+            object[] key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as object[];
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -27,12 +28,12 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(IQRData key)
+        private bool IsValid(object[] key)
         {
             if (key == null)
                 return false;
 
-            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Key))?.IsConfirmed ?? false;
+            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key[0] as byte[]))?.IsConfirmed ?? false;
         }
     }
 }

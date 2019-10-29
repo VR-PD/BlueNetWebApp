@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
 using VRPD_WebApp.db;
+using VRPD_WebApp.Utils;
 
 namespace VRPD_WebApp.Controllers
 {
@@ -13,12 +15,13 @@ namespace VRPD_WebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
+        [AllowAnonymous]
         public void Post([FromBody]byte[] raw)
         {
-            IEnumerable<byte> b = raw.AsEnumerable();
+            object[] data = Serializer.FromByteArray<object[]>(raw);
             List<Guest> all = db.Guest.ToList();
 
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(b));
+            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data[0] as byte[]));
 
             if (guest != null)
             {
