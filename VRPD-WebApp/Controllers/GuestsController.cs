@@ -15,7 +15,6 @@ namespace VRPD_WebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
-        [AllowAnonymous]
         public void Post([FromBody]byte[] raw)
         {
             object[] data = Serializer.FromByteArray<object[]>(raw);
