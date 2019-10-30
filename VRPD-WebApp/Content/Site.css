@@ -1,7 +1,17 @@
-﻿body {
+﻿html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    height: 100%;
+}
+
+/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -16,18 +26,21 @@ textarea {
     max-width: 280px;
 }
 
-.hor-center {
-    display: flex;
-    justify-content: center;
-}
-
 .qr-container {
-    display: inline-flex;
+    background-color: lightgray;
+    padding: 0 3% 0 3%;
+    display: flex;
     flex-direction: column;
-    align-content: center;
+    height: 100%;
+    margin: auto;
 }
 
 .qr-login {
+}
+
+.qr-download {
+    align-self: flex-end;
+    visibility: hidden;
 }
 
 .qr-btn {
@@ -41,6 +54,7 @@ textarea {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    z-index: 1;
 }
 
 .qr-login-btn {

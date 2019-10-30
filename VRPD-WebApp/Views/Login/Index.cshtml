@@ -12,13 +12,13 @@
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <div class="hor-center">
-        <div class="qr-container">
-            <img class="qr-login" src="@Url.Action("GetQrCode", "Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" />
+    <div class="qr-container">
+        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" /></div>
 
-            <input class="qr-login-btn qr-btn" type="button" value="Login" onclick="location.href='@ViewBag.ReturnUrl'" />
-            <input class="qr-app-btn qr-btn" type="button" value="Mobile App" />
-        </div>
+        <input class="qr-login-btn qr-btn" type="button" value="Login" onclick="location.href='@ViewBag.ReturnUrl'" />
+        <input class="qr-app-btn qr-btn" type="button" value="Mobile App" />
+
+        <div class="qr-download"><img src="@Url.Action("GetQrDownload", "Login")" /></div>
     </div>
 </body>
 </html>

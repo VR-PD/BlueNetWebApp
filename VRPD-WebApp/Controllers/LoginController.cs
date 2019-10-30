@@ -25,9 +25,20 @@ namespace VRPD_WebApp.Controllers
 
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(b), QRCodeGenerator.ECCLevel.L);
             QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(10);
+            Bitmap qrCodeImage = qrCode.GetGraphic(10, Color.Black, Color.LightGray, true);
             var bitmapBytes = BitmapToBytes(qrCodeImage); //Convert bitmap into a byte array
             return new FileContentResult(bitmapBytes, "image/jpeg"); //Return as file result
+        }
+
+        [AllowAnonymous]
+        public ActionResult GetQrDownload()
+        {
+            QRCodeGenerator gen = new QRCodeGenerator();
+            QRCodeData qrData = gen.CreateQrCode(new PayloadGenerator.Url("https://google.com/"), QRCodeGenerator.ECCLevel.M);
+            QRCode qrCode = new QRCode(qrData);
+            Bitmap qrImage = qrCode.GetGraphic(8, Color.Black, Color.LightGray, true);
+            byte[] bytes = BitmapToBytes(qrImage);
+            return new FileContentResult(bytes, "image/jpeg");
         }
 
         [HttpGet]
