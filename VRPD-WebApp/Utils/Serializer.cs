@@ -8,7 +8,7 @@ namespace VRPD_WebApp.Utils
         public static T FromByteArray<T>(byte[] data)
         {
             if (data == null)
-                return default;
+                return default(T);
             BinaryFormatter bf = new BinaryFormatter();
             using (MemoryStream ms = new MemoryStream(data))
             {
