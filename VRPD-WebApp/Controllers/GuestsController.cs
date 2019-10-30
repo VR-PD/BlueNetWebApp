@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using VRPD_WebApp.db;
-using VRPD_WebApp.Utils;
 
 namespace VRPD_WebApp.Controllers
 {
@@ -15,10 +14,10 @@ namespace VRPD_WebApp.Controllers
 
         public void Post([FromBody]byte[] raw)
         {
-            object[] data = Serializer.FromByteArray<object[]>(raw);
+            IEnumerable<byte> b = raw.AsEnumerable();
             List<Guest> all = db.Guest.ToList();
 
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data[0] as byte[]));
+            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(b));
 
             if (guest != null)
             {
