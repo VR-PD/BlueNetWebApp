@@ -18,7 +18,8 @@ namespace VRPD_WebApp.Controllers
         [AllowAnonymous]
         public ActionResult GetQrCode()
         {
-            if (!(Session[STATICS.VISITOR_KEY] is object[] qrInfo))
+            object[] qrInfo = Session[STATICS.VISITOR_KEY] as object[];
+            if (qrInfo == null)
                 return null;
 
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
