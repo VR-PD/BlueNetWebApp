@@ -35,14 +35,6 @@ textarea {
     margin: auto;
 }
 
-.qr-login {
-}
-
-.qr-download {
-    align-self: flex-end;
-    /*visibility: hidden;*/
-}
-
 .qr-btn {
     background-color: #1170DC;
     border: none;
