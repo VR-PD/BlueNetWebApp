@@ -40,7 +40,7 @@ textarea {
 
 .qr-download {
     align-self: flex-end;
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 .qr-btn {
@@ -57,10 +57,28 @@ textarea {
     z-index: 1;
 }
 
-.qr-login-btn {
+.self-start {
     align-self: flex-start;
 }
 
-.qr-app-btn {
+.self-end {
     align-self: flex-end;
 }
+
+.qr-app-btn {
+    visibility: hidden;
+}
+
+/*#region Toggle download qr */
+
+.toggle {
+    opacity: 0;
+    transition: opacity 0.8s linear;
+}
+
+.qr-app-btn[type="checkbox"]:checked + div {
+    opacity: 1;
+    border: none;
+}
+
+/*#endregion */

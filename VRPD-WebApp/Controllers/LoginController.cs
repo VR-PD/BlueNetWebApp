@@ -53,6 +53,7 @@ namespace VRPD_WebApp.Controllers
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
                 qRData = new object[] { g.Keynum, DateTime.UtcNow };
+
                 Session[STATICS.VISITOR_KEY] = qRData;
             }
 

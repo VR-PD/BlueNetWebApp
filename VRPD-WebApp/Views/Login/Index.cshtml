@@ -15,10 +15,11 @@
     <div class="qr-container">
         <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" /></div>
 
-        <input class="qr-login-btn qr-btn" type="button" value="Login" onclick="location.href='@ViewBag.ReturnUrl'" />
-        <input class="qr-app-btn qr-btn" type="button" value="Mobile App" />
+        <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@ViewBag.ReturnUrl'" />
+        <label for="app-link-qr" class="qr-btn self-end">Mobile App</label>
+        <input class="qr-app-btn" id="app-link-qr" type="checkbox" />
 
-        <div class="qr-download"><img src="@Url.Action("GetQrDownload", "Login")" /></div>
+        <div class="qr-download toggle"><img src="@Url.Action("GetQrDownload", "Login")" /></div>
     </div>
 </body>
 </html>
