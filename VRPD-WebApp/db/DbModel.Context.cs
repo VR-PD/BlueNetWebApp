@@ -13,10 +13,10 @@ namespace VRPD_WebApp.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VrpdContext : DbContext
+    public partial class Entities : DbContext
     {
-        public VrpdContext()
-            : base("name=VrpdContext")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace VRPD_WebApp.db
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<GameOverview> GameOverview { get; set; }
         public virtual DbSet<Guest> Guest { get; set; }
     }
 }

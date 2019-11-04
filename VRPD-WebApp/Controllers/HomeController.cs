@@ -1,11 +1,16 @@
 ﻿using System.IO;
+using System.Linq;
+using System.Text;
 using System.Web.Mvc;
+using VRPD_WebApp.db;
 using VRPD_WebApp.Models;
 
 namespace VRPD_WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly Entities db = new Entities();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -15,24 +20,16 @@ namespace VRPD_WebApp.Controllers
         [HttpGet]
         public ActionResult Overview()
         {
-            return View(new GameOverview());
+            return View(db.GameOverview.ToList());
         }
 
         public FileContentResult RenderImage(int id)
         {
-            if (id == -1)
-            {
-                System.Drawing.Image img = System.Drawing.Image.FromFile(@"C:\DEV\Repos\VRPD-WebApp\VRPD-WebApp\Image\image-placeholder.png");
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    img.Save(ms, img.RawFormat);
-                    return File(ms.ToArray(), "image/png");
-                }
-            }
+            GameOverview go = db.GameOverview.Find(id);
+            if (go != null)
+                return File(go.Image, "image/png");
             else
-            {
                 return null;
-            }
         }
     }
 }

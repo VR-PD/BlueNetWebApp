@@ -1,4 +1,4 @@
-﻿@model VRPD_WebApp.Models.GameOverview
+﻿@model List<VRPD_WebApp.db.GameOverview>
 
 @{
     ViewBag.Title = "Overview";
@@ -7,6 +7,9 @@
 
 <h2>Overview</h2>
 
-<h3>@Model.Title</h3>
-<p>@Model.Description</p>
-<img src="@Url.Action("RenderImage", new { id = Model.ID})" />
+@foreach (var game in Model)
+{
+    <h3>@game.Title</h3>
+    <p>@game.Description</p>
+    <img src="@Url.Action("RenderImage", new { id = game.Id })" />
+}

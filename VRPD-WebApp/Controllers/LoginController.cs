@@ -13,7 +13,7 @@ namespace VRPD_WebApp.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly VrpdContext db = new VrpdContext();
+        private readonly Entities db = new Entities();
 
         [AllowAnonymous]
         public ActionResult GetQrCode()

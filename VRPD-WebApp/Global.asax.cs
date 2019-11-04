@@ -25,6 +25,9 @@ namespace VRPD_WebApp
 
         private void Application_Start(object sender, EventArgs e)
         {
+            if (System.Diagnostics.Debugger.IsAttached)
+                System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

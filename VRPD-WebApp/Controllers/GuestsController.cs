@@ -10,7 +10,7 @@ namespace VRPD_WebApp.Controllers
 {
     public class GuestsController : ApiController
     {
-        private readonly VrpdContext db = new VrpdContext();
+        private readonly Entities db = new Entities();
 
         public IQueryable<Guest> Get() => db.Guest;
 

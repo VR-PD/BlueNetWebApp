@@ -10,7 +10,7 @@ namespace VRPD_WebApp.Models
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
     public class Authorizer : FilterAttribute, IAuthorizationFilter
     {
-        private VrpdContext db = new VrpdContext();
+        private Entities db = new Entities();
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {

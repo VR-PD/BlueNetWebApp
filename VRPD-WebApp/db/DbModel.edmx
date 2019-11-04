@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GameOverview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
         <EntityType Name="Guest">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +24,7 @@
           <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DbModelStoreContainer">
+          <EntitySet Name="GameOverview" EntityType="Self.GameOverview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
@@ -22,6 +32,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GameOverview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Guest">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,9 +48,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
           <Property Name="Visited" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="VrpdContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GameOverview" EntityType="Self.GameOverview" />
           <EntitySet Name="Guest" EntityType="Self.Guest" />
         </EntityContainer>
       </Schema>
@@ -39,7 +59,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="VrpdContext">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="GameOverview">
+            <EntityTypeMapping TypeName="DbModel.GameOverview">
+              <MappingFragment StoreEntitySet="GameOverview">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Guest">
             <EntityTypeMapping TypeName="DbModel.Guest">
               <MappingFragment StoreEntitySet="Guest">
