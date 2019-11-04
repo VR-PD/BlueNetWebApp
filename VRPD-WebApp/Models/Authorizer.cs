@@ -20,7 +20,7 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            object[] key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as object[];
+            QRModel key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as QRModel;
             if (!IsValid(key))
             {
                 // Unauthorized!
@@ -28,12 +28,12 @@ namespace VRPD_WebApp.Models
             }
         }
 
-        private bool IsValid(object[] key)
+        private bool IsValid(QRModel key)
         {
             if (key == null)
                 return false;
 
-            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key[0] as byte[]))?.IsConfirmed ?? false;
+            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Keynum))?.IsConfirmed ?? false;
         }
     }
 }

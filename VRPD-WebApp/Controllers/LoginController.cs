@@ -18,14 +18,14 @@ namespace VRPD_WebApp.Controllers
         [AllowAnonymous]
         public ActionResult GetQrCode()
         {
-            object[] qrInfo = Session[STATICS.VISITOR_KEY] as object[];
+            QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
             if (qrInfo == null)
                 return null;
 
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             {
                 // Create a qr code from the base 64 string of the serialized data
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(Serializer.ToByteArray(qrInfo)), QRCodeGenerator.ECCLevel.L);
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(Convert.ToBase64String(Serializer.ToByteArray(qrInfo.ToArray())), QRCodeGenerator.ECCLevel.L);
                 return GenerateQrCode(qrCodeData);
             }
         }
@@ -46,15 +46,14 @@ namespace VRPD_WebApp.Controllers
         public ActionResult Index()
         {
             // Check if session has qr data stored
-            object[] qrInfo = Session[STATICS.VISITOR_KEY] as object[];
-            if (qrInfo == null || (DateTime.UtcNow - (DateTime)qrInfo[QRData.Created]).TotalSeconds > 30)
+            QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
+
+            if (qrInfo == null || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
             {
                 // If qr data is missing or timed out, create a new guest
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
-                qrInfo = new object[3];
-                qrInfo[QRData.Keynum] = g.Keynum;
-                qrInfo[QRData.Created] = g.Visited;
+                qrInfo = new QRModel(g.Keynum, g.Visited, "");
 
                 Session[STATICS.VISITOR_KEY] = qrInfo;
             }
@@ -72,8 +71,8 @@ namespace VRPD_WebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            object[] k = Session[STATICS.VISITOR_KEY] as object[];
-            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k[QRData.Keynum] as byte[]));
+            QRModel k = Session[STATICS.VISITOR_KEY] as QRModel;
+            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.Keynum));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 

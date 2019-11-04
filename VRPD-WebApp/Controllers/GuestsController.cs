@@ -18,40 +18,15 @@ namespace VRPD_WebApp.Controllers
         {
             List<Guest> all = db.Guest.ToList();
 
-            object[] data = Serializer.FromByteArray<object[]>(raw);
+            QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
 
-            // Validate post data
-            if (!ValidPostData(data))
-                return;
-
-            byte[] key = data[QRData.Keynum] as byte[];
-
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(key));
+            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.Keynum));
 
             if (guest != null)
             {
                 guest.IsConfirmed = true;
                 db.SaveChanges();
             }
-        }
-
-        /// <summary>
-        /// Checks if the object array is valid qr data received from a client
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        private bool ValidPostData(object[] data)
-        {
-            try
-            {
-                if (!(data[QRData.Keynum] is byte[] && data[QRData.Created] is DateTime && data[QRData.UserID] is string))
-                    return false;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }
