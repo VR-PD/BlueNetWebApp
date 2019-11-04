@@ -19,7 +19,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Keynum" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="Keynum" Type="binary" MaxLength="16" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="Visited" Type="datetime" Nullable="false" />
           <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
@@ -46,7 +46,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Visited" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
         </EntityType>
