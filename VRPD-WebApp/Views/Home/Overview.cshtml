@@ -1,6 +1,12 @@
-﻿@{
+﻿@model VRPD_WebApp.Models.GameOverview
+
+@{
     ViewBag.Title = "Overview";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Overview</h2>
+
+<h3>@Model.Title</h3>
+<p>@Model.Description</p>
+<img src="@Url.Action("RenderImage", new { id = Model.ID})" />
