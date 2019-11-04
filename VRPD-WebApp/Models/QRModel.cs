@@ -26,7 +26,7 @@ namespace VRPD_WebApp.Models
         {
             try
             {
-                if (!(arr[iKeynum] is byte[] && arr[iCreated] is DateTime && arr[iUserID] is string))
+                if (arr[iKeynum] is byte[] && arr[iCreated] is DateTime && arr[iUserID] is string)
                     return new QRModel(arr[iKeynum] as byte[], (DateTime)arr[iCreated], arr[iUserID] as string);
             }
             catch (IndexOutOfRangeException)
