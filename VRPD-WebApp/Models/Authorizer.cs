@@ -5,6 +5,7 @@ using VRPD_WebApp.db;
 
 namespace VRPD_WebApp.Models
 {
+    [OutputCache(Duration = 0)]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
     public class Authorizer : FilterAttribute, IAuthorizationFilter
     {
