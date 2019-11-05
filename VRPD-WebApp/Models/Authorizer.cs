@@ -29,6 +29,7 @@ namespace VRPD_WebApp.Models
                 {
                     // No second chances, remove invalid record
                     db.Guest.Remove(found);
+                    filterContext.HttpContext.Session[STATICS.VISITOR_KEY] = null;
                     db.SaveChanges();
                 }
             }
