@@ -59,8 +59,6 @@ namespace VRPD_WebApp.Controllers
                 Session[STATICS.VISITOR_KEY] = qrInfo;
             }
 
-            ViewBag.ReturnUrl = "/";
-
             return View();
         }
 
