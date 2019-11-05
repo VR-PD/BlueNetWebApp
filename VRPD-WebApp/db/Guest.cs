@@ -10,7 +10,6 @@
 namespace VRPD_WebApp.db
 {
     using System;
-    using System.Collections.Generic;
     using System.Security.Cryptography;
 
     public partial class Guest
