@@ -16,6 +16,7 @@ namespace VRPD_WebApp.Controllers
         private readonly Entities db = new Entities();
 
         [AllowAnonymous]
+        [OutputCache(Duration = 0)]
         public ActionResult GetQrCode()
         {
             QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
