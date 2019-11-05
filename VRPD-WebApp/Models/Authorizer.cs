@@ -20,19 +20,28 @@ namespace VRPD_WebApp.Models
                 return;
 
             QRModel key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as QRModel;
-            if (!IsValid(key))
+            Guest found = null;
+            if (!IsValid(key, ref found))
             {
                 // Unauthorized!
                 filterContext.Result = new HttpUnauthorizedResult();
+                if (found != null)
+                {
+                    // No second chances, remove invalid record
+                    db.Guest.Remove(found);
+                    db.SaveChanges();
+                }
             }
         }
 
-        private bool IsValid(QRModel key)
+        private bool IsValid(QRModel key, ref Guest found)
         {
             if (key == null)
                 return false;
 
-            return db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Keynum))?.IsConfirmed ?? false;
+            found = db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Keynum));
+
+            return found?.IsConfirmed ?? false;
         }
     }
 }
