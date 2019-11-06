@@ -49,6 +49,10 @@ textarea {
     z-index: 1;
 }
 
+.titleclass {
+    margin-top: 60px;
+}
+
 .self-start {
     align-self: flex-start;
 }

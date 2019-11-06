@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<div class="titleclass">
     <h2>@Model.Title</h2>
     <img src="@Url.Action("RenderImage", new { id = Model.Id })" />
     <p>@Model.Description</p>
