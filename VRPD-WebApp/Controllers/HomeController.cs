@@ -16,6 +16,12 @@ namespace VRPD_WebApp.Controllers
         }
 
         [HttpGet]
+        public ActionResult Info(int id)
+        {
+            return View(db.GameOverview.Find(id));
+        }
+
+        [HttpGet]
         public ActionResult Overview()
         {
             return View(db.GameOverview.ToList());

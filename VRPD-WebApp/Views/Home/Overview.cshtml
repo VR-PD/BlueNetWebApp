@@ -5,11 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Overview</h2>
+<h2 class="titleclass">Overview</h2>
 
 @foreach (var game in Model)
 {
-    <h3>@game.Title</h3>
-    <p>@game.Description</p>
-    <img src="@Url.Action("RenderImage", new { id = game.Id })" />
+    <div onclick="location.href='@Url.Action("Info", new { id = game.Id })'">
+        <h3>@game.Title</h3>
+        <p>@game.Description</p>
+        <img src="@Url.Action("RenderImage", new { id = game.Id })" />
+    </div>
 }
