@@ -61,7 +61,7 @@ namespace VRPD_WebApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to metadata=res://*/db.DbModel.csdl|res://*/db.DbModel.ssdl|res://*/db.DbModel.msl;provider=System.Data.SqlClient;provider connection string=&apos;Data Source=vrpd.database.windows.net;initial catalog=vrpd-db;user id=bram;password=EMuM4Cr4JpDJwxu;encrypt=True;MultipleActiveResultSets=True;App=EntityFramework&apos;.
+        ///   Looks up a localized string similar to x.
         /// </summary>
         internal static string ConnectionString {
             get {
