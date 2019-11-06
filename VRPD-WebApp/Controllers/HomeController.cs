@@ -12,7 +12,7 @@ namespace VRPD_WebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return RedirectToActionPermanent("Overview");
         }
 
         [HttpGet]
