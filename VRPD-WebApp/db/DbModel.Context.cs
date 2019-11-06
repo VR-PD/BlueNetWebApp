@@ -12,11 +12,12 @@ namespace VRPD_WebApp.db
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Web.Configuration;
+
     public partial class Entities : DbContext
     {
         public Entities()
-            : base("name=Entities")
+            : base(WebConfigurationManager.AppSettings["Entities"] as string)
         {
         }
     
