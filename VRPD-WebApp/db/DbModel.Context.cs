@@ -17,7 +17,7 @@ namespace VRPD_WebApp.db
     public partial class Entities : DbContext
     {
         public Entities()
-            : base(Properties.Resources.ConnectionString ?? "name=Entities")
+            : base("name=Entities")
         {
         }
     
