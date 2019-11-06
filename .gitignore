@@ -338,6 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-/VRPD-WebApp/Connection.config
-/VRPD-WebApp/Properties/Resources.Designer.cs
+
 /VRPD-WebApp/Properties/Resources.resx
