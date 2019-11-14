@@ -71,7 +71,7 @@ namespace VRPD_WebApp.Controllers
         public ActionResult Logout()
         {
             QRModel k = Session[STATICS.VISITOR_KEY] as QRModel;
-            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.Keynum));
+            IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.GetKeynum()));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 

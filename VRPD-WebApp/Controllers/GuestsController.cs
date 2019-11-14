@@ -20,7 +20,7 @@ namespace VRPD_WebApp.Controllers
 
             QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
 
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.Keynum));
+            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.GetKeynum()));
 
             if (guest != null)
             {

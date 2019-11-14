@@ -40,7 +40,7 @@ namespace VRPD_WebApp.Models
             if (key == null)
                 return false;
 
-            found = db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Keynum));
+            found = db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.GetKeynum()));
 
             return found?.IsConfirmed ?? false;
         }
