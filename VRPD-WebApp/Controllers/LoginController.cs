@@ -1,4 +1,5 @@
-﻿using QRCoder;
+﻿using Microsoft.WindowsAzure.Storage.Blob;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +18,7 @@ namespace VRPDWebApp.Controllers
 
         [AllowAnonymous]
         [OutputCache(Duration = 0)]
+        [HttpGet]
         public ActionResult GetQrCode()
         {
             QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
@@ -32,12 +34,15 @@ namespace VRPDWebApp.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult GetQrDownload()
         {
             using (QRCodeGenerator gen = new QRCodeGenerator())
             {
+                Uri blob = new BlobConnector().GetScannerSAS();
+
                 // Create a qr code with a url to the download of the scanner app
-                QRCodeData qrData = gen.CreateQrCode(new PayloadGenerator.Url("https://google.com/"), QRCodeGenerator.ECCLevel.M);
+                QRCodeData qrData = gen.CreateQrCode(new PayloadGenerator.Url(blob.ToString()), QRCodeGenerator.ECCLevel.M);
                 return GenerateQrCode(qrData);
             }
         }
