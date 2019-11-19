@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPD_WebApp.db;
+using VRPDWebApp.db;
 
-namespace VRPD_WebApp.Models
+namespace VRPDWebApp.Models
 {
     [OutputCache(Duration = 0)]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-    public class Authorizer : FilterAttribute, IAuthorizationFilter
+    public sealed class Authorizer : FilterAttribute, IAuthorizationFilter, IDisposable
     {
         private Entities db = new Entities();
+
+        public void Dispose() => db.Dispose();
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {

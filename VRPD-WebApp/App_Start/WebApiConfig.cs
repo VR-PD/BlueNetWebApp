@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace VRPD_WebApp
+namespace VRPDWebApp
 {
     public static class WebApiConfig
     {

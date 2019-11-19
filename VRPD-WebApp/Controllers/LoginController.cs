@@ -5,11 +5,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using VRPD_WebApp.db;
-using VRPD_WebApp.Models;
-using VRPD_WebApp.Utils;
+using VRPDWebApp.db;
+using VRPDWebApp.Models;
+using VRPDWebApp.Utils;
 
-namespace VRPD_WebApp.Controllers
+namespace VRPDWebApp.Controllers
 {
     public class LoginController : Controller
     {

@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using VRPD_WebApp.Models;
+using VRPDWebApp.Models;
 
-namespace VRPD_WebApp
+namespace VRPDWebApp
 {
-    public class FilterConfig
+    public static class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {

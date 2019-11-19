@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VRPD_WebApp.db
+namespace VRPDWebApp.db
 {
     using System;
     using System.Collections.Generic;

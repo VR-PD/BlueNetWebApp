@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace VRPD_WebApp
+namespace VRPDWebApp
 {
     public class RouteConfig
     {
