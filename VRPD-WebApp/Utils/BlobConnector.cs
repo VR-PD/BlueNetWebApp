@@ -19,6 +19,19 @@ namespace VRPDWebApp.Utils
             blobClient = new CloudBlobClient(blobUri, new StorageCredentials("vrpdgamestore", key));
         }
 
+        public Uri GetGameSAS(string gameName)
+        {
+            CloudBlobContainer container = blobClient.GetContainerReference("vrpdgames");
+            CloudBlockBlob blob = container.GetBlockBlobReference(gameName);
+            SharedAccessBlobPolicy policy = new SharedAccessBlobPolicy()
+            {
+                Permissions = SharedAccessBlobPermissions.Read,
+                SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddMinutes(10)
+            };
+
+            return new Uri(blob.Uri, blob.GetSharedAccessSignature(policy));
+        }
+
         public Uri GetScannerSAS()
         {
             CloudBlobContainer container = blobClient.GetContainerReference("publicread");
