@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="qr-container">
-        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[VRPDWebApp.STATICS.VISITOR_KEY_STR]" /></div>
+        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[VRPDWebApp.STATICS.VISITORKEYSTR]" /></div>
 
         <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@Url.Action("Overview", "Home")'" />
         <label for="app-link-qr" class="qr-btn self-end">Mobile App</label>
