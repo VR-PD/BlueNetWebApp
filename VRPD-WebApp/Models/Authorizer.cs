@@ -21,7 +21,7 @@ namespace VRPDWebApp.Models
             if (skipAuthorization)
                 return;
 
-            QRModel key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as QRModel;
+            QRModel key = filterContext.HttpContext.Session[STATICS.VISITORKEY] as QRModel;
             Guest found = null;
             if (!IsValid(key, ref found))
             {
@@ -31,7 +31,7 @@ namespace VRPDWebApp.Models
                 {
                     // No second chances, remove invalid record
                     db.Guest.Remove(found);
-                    filterContext.HttpContext.Session[STATICS.VISITOR_KEY] = null;
+                    filterContext.HttpContext.Session[STATICS.VISITORKEY] = null;
                     db.SaveChanges();
                 }
             }

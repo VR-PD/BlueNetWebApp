@@ -19,7 +19,7 @@ namespace VRPDWebApp.Controllers
         [HttpGet]
         public ActionResult GetQrCode()
         {
-            QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
+            QRModel qrInfo = Session[STATICS.VISITORKEY] as QRModel;
             if (qrInfo == null)
                 return null;
 
@@ -46,7 +46,7 @@ namespace VRPDWebApp.Controllers
         public ActionResult Index()
         {
             // Check if session has qr data stored
-            QRModel qrInfo = Session[STATICS.VISITOR_KEY] as QRModel;
+            QRModel qrInfo = Session[STATICS.VISITORKEY] as QRModel;
 
             if (qrInfo == null || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
             {
@@ -55,7 +55,7 @@ namespace VRPDWebApp.Controllers
                 db.SaveChanges();
                 qrInfo = new QRModel(g.Keynum, g.Visited, "");
 
-                Session[STATICS.VISITOR_KEY] = qrInfo;
+                Session[STATICS.VISITORKEY] = qrInfo;
             }
 
             return View();
@@ -69,12 +69,12 @@ namespace VRPDWebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            QRModel k = Session[STATICS.VISITOR_KEY] as QRModel;
+            QRModel k = Session[STATICS.VISITORKEY] as QRModel;
             IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.GetKeynum()));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 
-            Session[STATICS.VISITOR_KEY] = null;
+            Session[STATICS.VISITORKEY] = null;
             return RedirectToActionPermanent("Index");
         }
     }
