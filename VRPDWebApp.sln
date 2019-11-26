@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRPD-WebApp", "VRPD-WebApp\VRPD-WebApp.csproj", "{BCCCEDD6-DEAC-4B68-BD66-9189EACC02C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRPDWebApp", "VRPD-WebApp\VRPDWebApp.csproj", "{BCCCEDD6-DEAC-4B68-BD66-9189EACC02C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
