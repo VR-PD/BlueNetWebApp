@@ -1,8 +1,5 @@
 ﻿using QRCoder;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using VRPDWebApp.db;
@@ -18,13 +15,11 @@ namespace VRPDWebApp.Controllers
         [HttpGet]
         public ActionResult GetQrDownload(string gameName)
         {
-            using (QRCodeGenerator gen = new QRCodeGenerator())
+            using (QREncoder encoder = new QREncoder())
             {
                 Uri blob = new BlobConnector().GetGameSAS(gameName);
 
-                // Create a qr code with a url to the download of the scanner app
-                QRCodeData qrData = gen.CreateQrCode(new PayloadGenerator.Url(blob.ToString()), QRCodeGenerator.ECCLevel.M);
-                return GenerateQrCode(qrData);
+                return encoder.GetQRImage(new PayloadGenerator.Url(blob.ToString()));
             }
         }
 
@@ -46,6 +41,7 @@ namespace VRPDWebApp.Controllers
             return View(db.GameOverview.ToList());
         }
 
+        [HttpGet]
         public FileContentResult RenderImage(int id)
         {
             GameOverview go = db.GameOverview.Find(id);
@@ -53,27 +49,6 @@ namespace VRPDWebApp.Controllers
                 return File(go.Image, "image/png");
             else
                 return null;
-        }
-
-        private byte[] BitmapToBytes(Bitmap img)
-        {
-            byte[] buffer;
-            using (MemoryStream stream = new MemoryStream())
-            {
-                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                buffer = stream.ToArray();
-            }
-            return buffer;
-        }
-
-        private FileContentResult GenerateQrCode(QRCodeData qrData)
-        {
-            using (QRCode qrCode = new QRCode(qrData))
-            {
-                Bitmap qrImage = qrCode.GetGraphic(8, Color.Black, Color.White, true);
-                byte[] bytes = BitmapToBytes(qrImage);
-                return new FileContentResult(bytes, "image/jpeg");
-            }
         }
     }
 }
