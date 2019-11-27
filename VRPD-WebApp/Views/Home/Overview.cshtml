@@ -9,7 +9,7 @@
 
 @foreach (var game in Model)
 {
-    <div onclick="location.href='@Url.Action("Info", new { id = game.Id })'">
+    <div class="Overview" onclick="location.href='@Url.Action("Info", new { id = game.Id })'">
         <h3>@game.Title</h3>
         <p>@game.Description</p>
         <img src="@Url.Action("RenderImage", new { id = game.Id })" />

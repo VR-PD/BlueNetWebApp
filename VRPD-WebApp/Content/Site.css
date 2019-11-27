@@ -53,6 +53,11 @@ textarea {
     margin-top: 60px;
 }
 
+.titleclass img {
+    width: 20%;
+    height: auto;
+}
+
 .self-start {
     align-self: flex-start;
 }
@@ -72,9 +77,24 @@ textarea {
     transition: opacity 0.8s linear;
 }
 
+.toggle img {
+    width: 50%;
+    height: auto;
+}
+
 .qr-app-btn[type="checkbox"]:checked + div {
     opacity: 1;
     border: none;
 }
 
 /*#endregion */
+
+.Overview {
+    width: 500px;
+    height: 500px;
+}
+
+.Overview img {
+    width: 75%;
+    height: auto;
+}
