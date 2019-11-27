@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="qr-container">
+        <img src="~/Image/bluenet hd.png" width="684" />
         <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[VRPDWebApp.STATICS.VISITORKEYSTR]" /></div>
 
         <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@Url.Action("Overview", "Home")'" />
