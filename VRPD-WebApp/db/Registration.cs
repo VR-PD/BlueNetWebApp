@@ -12,11 +12,10 @@ namespace VRPDWebApp.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Guest
+    public partial class Registration
     {
-        public int Id { get; set; }
-        public byte[] Keynum { get; set; }
-        public System.DateTime Visited { get; set; }
-        public bool IsConfirmed { get; set; }
+        public int regID { get; set; }
+        public string deviceID { get; set; }
+        public string userName { get; set; }
     }
 }

@@ -27,5 +27,6 @@ namespace VRPDWebApp.db
     
         public virtual DbSet<GameOverview> GameOverview { get; set; }
         public virtual DbSet<Guest> Guest { get; set; }
+        public virtual DbSet<Registration> Registration { get; set; }
     }
 }

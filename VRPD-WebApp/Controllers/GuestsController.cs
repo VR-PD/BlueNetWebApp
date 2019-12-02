@@ -14,19 +14,27 @@ namespace VRPDWebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
-        public void Post(byte[] raw)
+        public IHttpActionResult Post(byte[] raw)
         {
-            List<Guest> all = db.Guest.ToList();
-
-            QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
-
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.GetKeynum()));
-
-            if (guest != null)
+            try
             {
-                guest.IsConfirmed = true;
-                db.SaveChanges();
+                List<Guest> all = db.Guest.ToList();
+
+                QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
+
+                Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.GetKeynum()));
+
+                if (guest != null)
+                {
+                    guest.IsConfirmed = true;
+                    db.SaveChanges();
+                }
             }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }
