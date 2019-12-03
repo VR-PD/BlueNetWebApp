@@ -15,12 +15,19 @@ namespace VRPDWebApp.Controllers
         [HttpPost]
         public IHttpActionResult RegisterAgent(Registration registration)
         {
-            db.Registration.Add(new VRPDWebApp.db.Registration()
+            try
             {
-                deviceID = registration.DID,
-                userName = registration.UserName
-            });
-            db.SaveChanges();
+                db.Registration.Add(new VRPDWebApp.db.Registration()
+                {
+                    deviceID = registration.DID,
+                    userName = registration.UserName
+                });
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
             return Ok();
         }
 

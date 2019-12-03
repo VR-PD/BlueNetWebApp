@@ -18,10 +18,12 @@ namespace VRPDWebApp.Controllers
         {
             try
             {
-                List<Guest> all = db.Guest.ToList();
-
                 QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
 
+                if (!IsAuthorizedDevice(data))
+                    return Unauthorized();
+
+                List<Guest> all = db.Guest.ToList();
                 Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.GetKeynum()));
 
                 if (guest != null)
@@ -35,6 +37,14 @@ namespace VRPDWebApp.Controllers
                 return NotFound();
             }
             return Ok();
+        }
+
+        private bool IsAuthorizedDevice(QRModel data)
+        {
+            if (data.UserID == null || data.UserID.Length == 0)
+                return false;
+
+            return db.Registration.Any(r => r.deviceID == data.UserID);
         }
     }
 }
