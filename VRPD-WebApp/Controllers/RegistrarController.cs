@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using VRPDWebApp.db;
 
@@ -13,6 +9,7 @@ namespace VRPDWebApp.Controllers
         private readonly Entities db = new Entities();
 
         [HttpPost]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         public IHttpActionResult RegisterAgent(Registration registration)
         {
             try
