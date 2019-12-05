@@ -49,13 +49,50 @@ textarea {
     z-index: 1;
 }
 
+.dl-qr-btn {
+    background-color: #004681;
+    border: none;
+    color: white;
+    padding: 1vw 1vw;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.Bannerbar {
+    align-content: center;
+    width: 100%;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.Bannerbar img {
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
+.Statusbar {
+    align-content: center;
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.downloadclass {
+    width: 100px;
+    height: 100%;
+}
+
 .titleclass {
-    margin-top: 60px;
 }
 
 .titleclass img {
-    width: 20%;
-    height: auto;
+    width: 50px;
+    height: 50px;
 }
 
 .self-start {
@@ -74,6 +111,10 @@ textarea {
     visibility: hidden;
 }
 
+.qr-dl-btn {
+    visibility: hidden;
+}
+
 /*#region Toggle download qr */
 
 .toggle {
@@ -87,6 +128,11 @@ textarea {
 }
 
 .qr-app-btn[type="checkbox"]:checked + div {
+    opacity: 1;
+    border: none;
+}
+
+.qr-dl-btn[type="checkbox"]:checked + div {
     opacity: 1;
     border: none;
 }
