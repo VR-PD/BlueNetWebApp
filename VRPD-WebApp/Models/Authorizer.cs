@@ -23,7 +23,7 @@ namespace VRPDWebApp.Models
 
             QRModel key = filterContext.HttpContext.Session[STATICS.VISITORKEY] as QRModel;
             Guest found = null;
-            if (!IsValid(key, ref found) && false)
+            if (!IsValid(key, ref found))
             {
                 // Unauthorized!
                 filterContext.Result = new HttpUnauthorizedResult();
