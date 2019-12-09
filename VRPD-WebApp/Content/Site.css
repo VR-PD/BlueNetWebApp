@@ -196,7 +196,7 @@ textarea {
     height: 500px;
 }
 
-.Overview img {
-    width: 75%;
-    height: auto;
-}
+    .Overview img {
+        width: 75%;
+        height: auto;
+    }

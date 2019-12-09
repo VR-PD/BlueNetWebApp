@@ -1,8 +1,8 @@
-﻿using System;
+﻿using QRCoder;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Web.Mvc;
-using QRCoder;
 
 namespace VRPDWebApp.Utils
 {
