@@ -15,6 +15,7 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -81,13 +82,13 @@ textarea {
 .Statusbarcontainer {
     font-size: 14px;
     list-style: none;
-    margin: 0;
+    margin: 0 0 2% 0;
     background: #DCDCDC;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    display: inline-flex;
+    display: flex;
     -webkit-flex-flow: row wrap;
     justify-content: flex-start;
     height: 8%;
@@ -109,14 +110,36 @@ textarea {
     order: 2;
     text-align: center;
     color: dimgrey;
-    width: 10%;
+    width: auto;
     height: 100%;
+    padding: 0px 25px
+}
+
+/*Game Info page general content container*/
+.Contentcontainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #f2f2f2;
+}
+
+/*Game Info page general game info*/
+.GameInfoitem {
+    order: 1;
+    height: 370px;
+    width: 60%;
+    margin: 1%;
+    padding: 5px;
+    background-color: #9191916b;
+    border-radius: 5px;
 }
 
 /*Game Info page title+image*/
 .titleclass {
     height:50px;
-    width: 60%;
+    width: 100%;
 }
 
 .titleclass img {
@@ -126,24 +149,76 @@ textarea {
 
 /*Game Info page categories*/
 .Categoriescontainer {
+    display: flex;
     flex-direction: row;
-    width:auto;
+    width: auto;
     height: 5%;
+    margin-bottom: 25px;
 }
 
 .Categoryitem {
+    order: 1;
     font-size: 8px;
     width: auto;
-    height: 10px;
-
+    height: 15px;
+    background-color: #4682b457;
+    border-radius: 5px;
+    padding: 2px 3px;
+    margin: 0px 2px;
 }
 
 /*Game Info page description-long*/
 .description {
     height: 200px;
-    width: 60%;
+    width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+/*Game Info page friendlist*/
+.friendlistcontainer {
+    order: 3;
+    height: 185px;
+    width: 30%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 1%;
+    padding: 5px;
+    background-color: #9191916b;
+    border-radius: 5px;
+}
+
+/*Game Info page friends*/
+.frienditem {
+    order: 1;
+    font-size: 12px;
+    width: auto;
+    height: 48px;
+    border: 2px ridge steelblue;
+    border-radius: 5px;
+    padding: 1px 3px;
+    margin: 5px 2px;
+}
+
+/*Game Info page friendlist*/
+.statisticscontainer {
+    order: 2;
+    height: 185px;
+    width: 30%;
+    margin: 1%;
+    padding: 5px;
+    background-color: #9191916b;
+    border-radius: 5px;
+}
+
+/*Game Info page friends*/
+.statistics {
+    order: 1;
+    font-size: 12px;
+    width: auto;
+    height: auto;
+    padding: 1px 3px;
+    margin: 5px 2px;
 }
 /*Game Info page end*/
 

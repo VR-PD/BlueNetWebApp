@@ -21,25 +21,32 @@
         <b>17:58</b></br><small>last played</small>
     </div>
     <div class="StatusbarInfoitem">
-        &#9733;&#9733;&#9733;&#9734;&#9734;
+        &#9733;&#9733;&#9733;&#9734;&#9734;</br>
+        <small>Beoordeling</small>
     </div>
 </div>
-<div>
-    <div>
+<div class="Contentcontainer">
+    <div class="GameInfoitem">
         <div class="titleclass">
             <h2><img class="titleclassicon" , src="@Url.Action("RenderImage", new { id = Model.Id })" /> @Model.Title</h2>
         </div>
-        <div class="Categories">
-            <div class="Category">
-                | Quiz |
+        <div class="Categoriescontainer">
+            <!-- Hier komt een foreach te staan met alle categorieën die gekoppeld zijn
+            <div class="Categoryitem">
+                <category.id>
             </div>
-            <div class="Category">
-                | Multiplayer |
+             -->
+            <div class="Categoryitem">
+                Quiz
             </div>
-            <div class="Category">
-                | Politie |
+            <div class="Categoryitem">
+                Multiplayer
+            </div>
+            <div class="Categoryitem">
+                Politie
             </div>
         </div>
+        <h4>Description</h4>
         <div class="description">
             <p>@Model.Description</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis magna eget accumsan lobortis. Proin tincidunt elit quis lacus molestie, a fermentum tellus molestie. Proin nunc orci, dignissim sit amet nunc sed, fermentum tincidunt tellus. Nulla feugiat fringilla nunc vitae fringilla. Quisque sapien augue, dignissim vel pharetra vel, ultricies et enim. Nulla egestas ante faucibus erat semper fringilla. Aenean vulputate consectetur sapien, quis pulvinar elit ultrices vel. Sed auctor ut neque eget pulvinar. Suspendisse auctor erat eu sem euismod, sed cursus leo volutpat. Nam mauris orci, condimentum vel ornare sed, aliquam id ipsum. Nullam at libero non diam ullamcorper consequat et sed velit. Nunc aliquam vestibulum est quis pretium. Suspendisse sed aliquam lorem, sit amet pulvinar nisl.</p>
@@ -49,7 +56,42 @@
             <p>Nam rutrum odio odio, sed blandit nisi faucibus id. Ut id metus libero. Nullam ac tristique odio, in aliquam tortor. Cras auctor ex eget tellus semper, commodo porta velit fringilla. Etiam interdum aliquet risus, vel vestibulum felis posuere sit amet. Fusce consequat felis eu enim facilisis commodo a cursus neque. Etiam dapibus nulla sit amet aliquet ornare.</p>
         </div>
     </div>
-    <div align="right">
-        blaaaaa
+    <div class="friendlistcontainer">
+        <h4>Vrienden</h4>
+        <!-- Hier komt een foreach te staan met alle vrienden
+        <div class="frienditem">
+            <category.id>
+        </div>
+         -->
+        <div class="frienditem">
+            Karel
+        </div>
+        <div class="frienditem">
+            Bert
+        </div>
+        <div class="frienditem">
+            Ernie
+        </div>
+        <div class="frienditem">
+            Kees
+        </div>
+        <div class="frienditem">
+            Barry Bakvis
+        </div>
+    </div>
+    <div class="statisticscontainer">
+        <h4>stats</h4>
+        <!-- Hier komen statistieken te staan
+    <div class="statistics">
+        stats
+    </div>
+     -->
+        <div class="statistics">
+            Kogels afgevuurd: 3</br>
+            Mensen geredt: 15</br>
+            Piefjes gepaft: 293</br>
+            Onzin statistieken: 0</br>
+            Kaas gegeten: 17</br>
+        </div>
     </div>
 </div>
