@@ -62,6 +62,8 @@ textarea {
     z-index: 1;
 }
 
+/*Game Info page start*/
+/*Game Banner*/
 .Bannerbar {
     width: 100%;
     height: 25%;
@@ -75,7 +77,8 @@ textarea {
     display: block;
 }
 
-.Statusbar {
+/*Game Info page Status bar*/
+.Statusbarcontainer {
     font-size: 14px;
     list-style: none;
     margin: 0;
@@ -92,22 +95,17 @@ textarea {
     flex-direction: row;
 }
 
-.downloadclass {
+/*Game Info page download button*/
+.StatusbarDownloaditem {
     order: 1;
     width: 10%;
     height: 100%;
     flex-basis: min-content;
+    background-color: #004681;
 }
 
-.Playtime {
-    order: 2;
-    text-align:center;
-    color: blue;
-    width: 10%;
-    height: 100%;
-}
-
-.Lastplayed {
+/*Game Info page quick info*/
+.StatusbarInfoitem {
     order: 2;
     text-align: center;
     color: dimgrey;
@@ -115,14 +113,10 @@ textarea {
     height: 100%;
 }
 
-.ReviewSmall {
-    order: 3;
-    width: 10%;
-    height: 100%;
-}
-
+/*Game Info page title+image*/
 .titleclass {
     height:50px;
+    width: 60%;
 }
 
 .titleclass img {
@@ -130,12 +124,28 @@ textarea {
     height: 50px;
 }
 
+/*Game Info page categories*/
+.Categoriescontainer {
+    flex-direction: row;
+    width:auto;
+    height: 5%;
+}
+
+.Categoryitem {
+    font-size: 8px;
+    width: auto;
+    height: 10px;
+
+}
+
+/*Game Info page description-long*/
 .description {
     height: 200px;
     width: 60%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
+/*Game Info page end*/
 
 .self-start {
     align-self: flex-start;
