@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPD_WebApp.db;
+using VRPDWebApp.db;
 
-namespace VRPD_WebApp.Models
+namespace VRPDWebApp.Models
 {
     [OutputCache(Duration = 0)]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-    public class Authorizer : FilterAttribute, IAuthorizationFilter
+    public sealed class Authorizer : FilterAttribute, IAuthorizationFilter, IDisposable
     {
         private Entities db = new Entities();
+
+        public void Dispose() => db.Dispose();
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
@@ -19,9 +21,9 @@ namespace VRPD_WebApp.Models
             if (skipAuthorization)
                 return;
 
-            QRModel key = filterContext.HttpContext.Session[STATICS.VISITOR_KEY] as QRModel;
+            QRModel key = filterContext.HttpContext.Session[STATICS.VISITORKEY] as QRModel;
             Guest found = null;
-            if (!IsValid(key, ref found) && false)
+            if (!IsValid(key, ref found))
             {
                 // Unauthorized!
                 filterContext.Result = new HttpUnauthorizedResult();
@@ -29,7 +31,7 @@ namespace VRPD_WebApp.Models
                 {
                     // No second chances, remove invalid record
                     db.Guest.Remove(found);
-                    filterContext.HttpContext.Session[STATICS.VISITOR_KEY] = null;
+                    filterContext.HttpContext.Session[STATICS.VISITORKEY] = null;
                     db.SaveChanges();
                 }
             }
@@ -40,7 +42,7 @@ namespace VRPD_WebApp.Models
             if (key == null)
                 return false;
 
-            found = db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.Keynum));
+            found = db.Guest.ToList().FirstOrDefault(g => g.Keynum.SequenceEqual(key.GetKeynum()));
 
             return found?.IsConfirmed ?? false;
         }

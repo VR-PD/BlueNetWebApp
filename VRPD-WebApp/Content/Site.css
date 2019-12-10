@@ -28,7 +28,7 @@ textarea {
 
 .qr-container {
     background-color: lightgray;
-    padding: 0 3% 0 3%;
+    /*padding: 0 3% 0 3%;*/
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -36,7 +36,7 @@ textarea {
 }
 
 .qr-btn {
-    background-color: #1170DC;
+    background-color: #004681;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -44,7 +44,7 @@ textarea {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px 30px 2px 30px;
     cursor: pointer;
     z-index: 1;
 }
@@ -53,8 +53,17 @@ textarea {
     margin-top: 60px;
 }
 
+    .titleclass img {
+        width: 20%;
+        height: auto;
+    }
+
 .self-start {
     align-self: flex-start;
+}
+
+.qr-login {
+    align-self: center;
 }
 
 .self-end {
@@ -72,9 +81,24 @@ textarea {
     transition: opacity 0.8s linear;
 }
 
+    .toggle img {
+        width: 50%;
+        height: auto;
+    }
+
 .qr-app-btn[type="checkbox"]:checked + div {
     opacity: 1;
     border: none;
 }
 
 /*#endregion */
+
+.Overview {
+    width: 500px;
+    height: 500px;
+}
+
+    .Overview img {
+        width: 75%;
+        height: auto;
+    }

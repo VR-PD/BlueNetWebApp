@@ -6,16 +6,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - My ASP.NET Application</title>
+    <title>Login - BlueNet</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
     <div class="qr-container">
-        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[STATICS.VISITOR_KEY_STR]" /></div>
+        <img src="~/Image/bluenet hd.png" width="684" />
+        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[VRPDWebApp.STATICS.VISITORKEYSTR]" /></div>
 
-        <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='/'" />
+        <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@Url.Action("Overview", "Home")'" />
         <label for="app-link-qr" class="qr-btn self-end">Mobile App</label>
         <input class="qr-app-btn" id="app-link-qr" type="checkbox" />
 

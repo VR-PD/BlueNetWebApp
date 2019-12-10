@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using VRPD_WebApp.db;
-using VRPD_WebApp.Models;
-using VRPD_WebApp.Utils;
+using VRPDWebApp.db;
+using VRPDWebApp.Models;
+using VRPDWebApp.Utils;
 
-namespace VRPD_WebApp.Controllers
+namespace VRPDWebApp.Controllers
 {
     public class GuestsController : ApiController
     {
@@ -14,19 +14,37 @@ namespace VRPD_WebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
-        public void Post(byte[] raw)
+        public IHttpActionResult Post(byte[] raw)
         {
-            List<Guest> all = db.Guest.ToList();
-
-            QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
-
-            Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.Keynum));
-
-            if (guest != null)
+            try
             {
-                guest.IsConfirmed = true;
-                db.SaveChanges();
+                QRModel data = QRModel.FromArray(Serializer.FromByteArray<object[]>(raw));
+
+                if (!IsAuthorizedDevice(data))
+                    return Unauthorized();
+
+                List<Guest> all = db.Guest.ToList();
+                Guest guest = all.FirstOrDefault(g => g.Keynum.SequenceEqual(data.GetKeynum()));
+
+                if (guest != null)
+                {
+                    guest.IsConfirmed = true;
+                    db.SaveChanges();
+                }
             }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+
+        private bool IsAuthorizedDevice(QRModel data)
+        {
+            if (data.UserID == null || data.UserID.Length == 0)
+                return false;
+
+            return db.Registration.Any(r => r.deviceID == data.UserID);
         }
     }
 }

@@ -1,13 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using QRCoder;
+using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPD_WebApp.db;
+using VRPDWebApp.db;
+using VRPDWebApp.Utils;
 
-namespace VRPD_WebApp.Controllers
+namespace VRPDWebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly Entities db = new Entities();
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult GetQrDownload(string gameName)
+        {
+            using (QREncoder encoder = new QREncoder())
+            {
+                Uri blob = new BlobConnector().GetGameSAS(gameName);
+
+                return encoder.GetQRImage(new PayloadGenerator.Url(blob.ToString()));
+            }
+        }
 
         [HttpGet]
         public ActionResult Index()
@@ -27,6 +41,7 @@ namespace VRPD_WebApp.Controllers
             return View(db.GameOverview.ToList());
         }
 
+        [HttpGet]
         public FileContentResult RenderImage(int id)
         {
             GameOverview go = db.GameOverview.Find(id);

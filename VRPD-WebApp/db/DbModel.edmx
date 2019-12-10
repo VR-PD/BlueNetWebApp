@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="GameOverview">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Description" Type="ntext" Nullable="false" />
           <Property Name="Image" Type="image" />
         </EntityType>
@@ -19,19 +19,28 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Keynum" Type="binary" MaxLength="16" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Keynum" Type="binary" MaxLength="16" Nullable="false" />
           <Property Name="Visited" Type="datetime" Nullable="false" />
           <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="DbModelStoreContainer">
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="regID" />
+          </Key>
+          <Property Name="regID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="deviceID" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="GameOverview" EntityType="Self.GameOverview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="GameOverview">
           <Key>
             <PropertyRef Name="Id" />
@@ -46,22 +55,31 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Keynum" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
           <Property Name="Visited" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="regID" />
+          </Key>
+          <Property Name="regID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deviceID" Type="String" FixedLength="false" Unicode="false" Nullable="false" MaxLength="24" />
+          <Property Name="userName" Type="String" FixedLength="false" Unicode="false" Nullable="false" MaxLength="24" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GameOverview" EntityType="Self.GameOverview" />
           <EntitySet Name="Guest" EntityType="Self.Guest" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="GameOverview">
-            <EntityTypeMapping TypeName="DbModel.GameOverview">
+            <EntityTypeMapping TypeName="Model.GameOverview">
               <MappingFragment StoreEntitySet="GameOverview">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -71,12 +89,21 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Guest">
-            <EntityTypeMapping TypeName="DbModel.Guest">
+            <EntityTypeMapping TypeName="Model.Guest">
               <MappingFragment StoreEntitySet="Guest">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Keynum" ColumnName="Keynum" />
                 <ScalarProperty Name="Visited" ColumnName="Visited" />
                 <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration">
+            <EntityTypeMapping TypeName="Model.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="regID" ColumnName="regID" />
+                <ScalarProperty Name="deviceID" ColumnName="deviceID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

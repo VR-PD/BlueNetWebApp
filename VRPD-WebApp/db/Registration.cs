@@ -12,11 +12,10 @@ namespace VRPDWebApp.db
     using System;
     using System.Collections.Generic;
     
-    public partial class GameOverview
+    public partial class Registration
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public byte[] Image { get; set; }
+        public int regID { get; set; }
+        public string deviceID { get; set; }
+        public string userName { get; set; }
     }
 }

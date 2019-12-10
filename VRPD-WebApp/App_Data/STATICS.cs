@@ -1,8 +1,8 @@
-﻿namespace VRPD_WebApp
+﻿namespace VRPDWebApp
 {
     public static class STATICS
     {
-        public static string VISITOR_KEY = "verification-key";
-        public static string VISITOR_KEY_STR = "verification-key-tostring";
+        public const string VISITORKEY = "verification-key";
+        public const string VISITORKEYSTR = "verification-key-tostring";
     }
 }

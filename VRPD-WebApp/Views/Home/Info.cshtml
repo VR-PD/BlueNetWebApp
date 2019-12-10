@@ -1,4 +1,4 @@
-﻿@model VRPD_WebApp.db.GameOverview
+﻿@model VRPDWebApp.db.GameOverview
 
 @{
     ViewBag.Title = "Info";
@@ -9,4 +9,5 @@
     <h2>@Model.Title</h2>
     <img src="@Url.Action("RenderImage", new { id = Model.Id })" />
     <p>@Model.Description</p>
+    <img src="@Url.Action("GetQrDownload", "Home", new { gameName = Model.Title })" alt="@Model.Title">
 </div>
