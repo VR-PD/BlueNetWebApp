@@ -40,7 +40,7 @@ namespace VRPDWebApp.Utils
             }
         }
 
-        private byte[] BitmapToBytes(Bitmap img)
+        private static byte[] BitmapToBytes(Bitmap img)
         {
             byte[] buffer;
             using (MemoryStream stream = new MemoryStream())

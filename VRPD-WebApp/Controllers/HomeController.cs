@@ -11,8 +11,8 @@ namespace VRPDWebApp.Controllers
     {
         private readonly Entities db = new Entities();
 
-        [AllowAnonymous]
         [HttpGet]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
         public ActionResult GetQrDownload(string gameName)
         {
             using (QREncoder encoder = new QREncoder())

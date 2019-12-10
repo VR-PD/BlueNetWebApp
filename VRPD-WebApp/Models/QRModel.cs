@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace VRPDWebApp.Models
 {
@@ -79,7 +80,7 @@ namespace VRPDWebApp.Models
 
         public override string ToString()
         {
-            return $"Keynum: {Convert.ToBase64String(keynum)}\nCreation: {Created.ToString()}\nUserID: {UserID}";
+            return $"Keynum: {Convert.ToBase64String(keynum)}\nCreation: {Created.ToString(CultureInfo.CurrentCulture)}\nUserID: {UserID}";
         }
     }
 }
