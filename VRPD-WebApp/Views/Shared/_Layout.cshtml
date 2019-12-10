@@ -17,9 +17,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+
         @Html.ActionLink("BlueNet", "Overview", "Home", new { area = "" }, new { @class = "navbar-brand" })
     </div>-->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="@Url.Action("Overview","Home")">
                 <img src="~/Image/bluenet witwit.png" alt="" height="40px">
             </a>
             <div class="navbar-collapse collapse">
