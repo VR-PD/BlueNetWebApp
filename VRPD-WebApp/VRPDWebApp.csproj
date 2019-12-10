@@ -253,6 +253,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Image\bluenet hd.png" />
+    <Content Include="Image\bluenet witwit.png" />
     <Content Include="Image\image-placeholder.png" />
     <EntityDeploy Include="db\dbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
