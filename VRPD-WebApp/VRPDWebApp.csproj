@@ -258,6 +258,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Image\bluenet hd.png" />
+    <Content Include="Image\bluenet witwit.png" />
     <Content Include="Image\image-placeholder.png" />
     <EntityDeploy Include="db\dbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -276,6 +277,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.shop.css.map" />
     <None Include="Properties\PublishProfiles\BlueNetWeb - Web Deploy.pubxml" />
+    <Content Include="Image\logoship2.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -37,7 +37,7 @@ namespace VRPDWebApp.Controllers
             {
                 Uri blob = new BlobConnector().GetScannerSAS();
 
-                return encoder.GetQRImage(new PayloadGenerator.Url(blob.ToString()), Color.LightGray);
+                return encoder.GetQRImage(new PayloadGenerator.Url(blob.ToString()), Color.White);
             }
         }
 
