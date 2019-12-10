@@ -8,9 +8,10 @@ using System.Web.Security;
 
 namespace VRPDWebApp
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>")]
     public class Global : HttpApplication
     {
-        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        protected void ApplicationPostAuthenticateRequest(Object sender, EventArgs e)
         {
             var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (authCookie != null)

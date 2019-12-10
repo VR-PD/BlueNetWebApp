@@ -14,6 +14,7 @@ namespace VRPDWebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         public IHttpActionResult Post(byte[] raw)
         {
             try

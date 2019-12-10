@@ -19,8 +19,7 @@ namespace VRPDWebApp.Controllers
         [HttpGet]
         public ActionResult GetQrCode()
         {
-            QRModel qrInfo = Session[STATICS.VISITORKEY] as QRModel;
-            if (qrInfo == null)
+            if (!(Session[STATICS.VISITORKEY] is QRModel qrInfo))
                 return null;
 
             using (QREncoder encoder = new QREncoder())
@@ -31,6 +30,7 @@ namespace VRPDWebApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
         public ActionResult GetQrDownload()
         {
             using (QREncoder encoder = new QREncoder())
@@ -46,9 +46,8 @@ namespace VRPDWebApp.Controllers
         public ActionResult Index()
         {
             // Check if session has qr data stored
-            QRModel qrInfo = Session[STATICS.VISITORKEY] as QRModel;
 
-            if (qrInfo == null || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
+            if (!(Session[STATICS.VISITORKEY] is QRModel qrInfo) || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
             {
                 // If qr data is missing or timed out, create a new guest
                 Guest g = db.Guest.Add(new Guest());
