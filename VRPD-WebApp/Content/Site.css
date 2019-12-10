@@ -67,6 +67,12 @@ textarea {
         margin-right: auto;
     }
 
+.buton {
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .self-start {
     align-self: flex-start;
 }
