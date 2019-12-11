@@ -1,10 +1,14 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace VRPDWebApp
+namespace BlueNetWebApp
 {
     public sealed class RouteConfig
     {
+        private RouteConfig()
+        {
+        }
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");

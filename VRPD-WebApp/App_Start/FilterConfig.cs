@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
-using VRPDWebApp.Models;
 
-namespace VRPDWebApp
+namespace BlueNetWebApp
 {
     public static class FilterConfig
     {

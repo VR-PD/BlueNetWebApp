@@ -7,25 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VRPDWebApp.db
+namespace BlueNetWebApp.db
 {
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography;
 
     public partial class Guest
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Guest()
-        {
-            Keynum = new byte[16];
-            new RNGCryptoServiceProvider().GetBytes(Keynum);
-            Visited = DateTime.UtcNow;
-            this.IsConfirmed = false;
-        }
+        
         public int Id { get; set; }
         public byte[] Keynum { get; set; }
         public System.DateTime Visited { get; set; }
         public bool IsConfirmed { get; set; }
     }
 }
+
+
+

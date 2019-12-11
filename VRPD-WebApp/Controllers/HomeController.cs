@@ -2,10 +2,9 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPDWebApp.db;
-using VRPDWebApp.Utils;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class HomeController : Controller
     {

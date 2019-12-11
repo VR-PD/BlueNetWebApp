@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using VRPDWebApp.db;
-using VRPDWebApp.Models;
-using VRPDWebApp.Utils;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class GuestsController : ApiController
     {
