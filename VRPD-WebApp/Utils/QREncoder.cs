@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Web.Mvc;
 
-namespace VRPDWebApp.Utils
+namespace BlueNetWebApp
 {
     public sealed class QREncoder : IDisposable
     {

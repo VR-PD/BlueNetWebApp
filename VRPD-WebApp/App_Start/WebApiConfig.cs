@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace VRPDWebApp
+namespace BlueNetWebApp
 {
     public static class WebApiConfig
     {

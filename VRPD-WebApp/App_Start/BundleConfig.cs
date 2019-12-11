@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Web.Optimization;
 
-namespace VRPDWebApp
+namespace BlueNetWebApp
 {
     public sealed class BundleConfig
     {
+        private BundleConfig()
+        {
+        }
+
         public static void RegisterBundles(BundleCollection bundles)
         {
             if (bundles == null)

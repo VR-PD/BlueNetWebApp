@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPDWebApp.db;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Models
+namespace BlueNetWebApp
 {
     [OutputCache(Duration = 0)]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
@@ -17,7 +17,7 @@ namespace VRPDWebApp.Models
             if (skipAuthorization)
                 return;
 
-            QRModel key = filterContext.HttpContext.Session[STATICS.VISITORKEY] as QRModel;
+            QRModel key = filterContext.HttpContext.Session[Statics.Visitorkey] as QRModel;
             Guest found = null;
 
             using (Entities db = new Entities())
@@ -30,7 +30,7 @@ namespace VRPDWebApp.Models
                     {
                         // No second chances, remove invalid record
                         db.Guest.Remove(found);
-                        filterContext.HttpContext.Session[STATICS.VISITORKEY] = null;
+                        filterContext.HttpContext.Session[Statics.Visitorkey] = null;
                         db.SaveChanges();
                     }
                 }

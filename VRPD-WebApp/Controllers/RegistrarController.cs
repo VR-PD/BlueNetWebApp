@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Http;
-using VRPDWebApp.db;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class RegistrarController : ApiController
     {

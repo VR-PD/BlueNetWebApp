@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web.Mvc;
-using VRPDWebApp.db;
-using VRPDWebApp.Models;
-using VRPDWebApp.Utils;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class LoginController : Controller
     {
@@ -19,7 +17,7 @@ namespace VRPDWebApp.Controllers
         [HttpGet]
         public ActionResult GetQrCode()
         {
-            if (!(Session[STATICS.VISITORKEY] is QRModel qrInfo))
+            if (!(Session[Statics.Visitorkey] is QRModel qrInfo))
                 return null;
 
             using (QREncoder encoder = new QREncoder())
@@ -47,14 +45,14 @@ namespace VRPDWebApp.Controllers
         {
             // Check if session has qr data stored
 
-            if (!(Session[STATICS.VISITORKEY] is QRModel qrInfo) || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
+            if (!(Session[Statics.Visitorkey] is QRModel qrInfo) || (DateTime.UtcNow - qrInfo.Created).TotalSeconds > 30)
             {
                 // If qr data is missing or timed out, create a new guest
                 Guest g = db.Guest.Add(new Guest());
                 db.SaveChanges();
                 qrInfo = new QRModel(g.Keynum, g.Visited, "");
 
-                Session[STATICS.VISITORKEY] = qrInfo;
+                Session[Statics.Visitorkey] = qrInfo;
             }
 
             return View();
@@ -68,12 +66,12 @@ namespace VRPDWebApp.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult Logout()
         {
-            QRModel k = Session[STATICS.VISITORKEY] as QRModel;
+            QRModel k = Session[Statics.Visitorkey] as QRModel;
             IEnumerable<Guest> r = db.Guest.ToList().Where(g => g.Keynum.SequenceEqual(k.GetKeynum()));
             db.Guest.RemoveRange(r);
             db.SaveChanges();
 
-            Session[STATICS.VISITORKEY] = null;
+            Session[Statics.Visitorkey] = null;
             return RedirectToActionPermanent("Index");
         }
     }
