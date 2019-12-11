@@ -1,100 +1,102 @@
-﻿@model VRPDWebApp.db.GameOverview
+﻿@model BlueNetWebApp.db.GameOverview
 
 @{
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="Bannerbar">
-    <img src="~/Image/logoship2.png" />
-</div>
-<div class="Statusbarcontainer">
-    <div class="StatusbarDownloaditem">
-        <label for="dl-link-qr" class="dl-qr-btn self-end">Download</label>
-        <input class="qr-dl-btn" id="dl-link-qr" type="checkbox" />
 
-        <div class="self-end toggle"><img src="@Url.Action("GetQrDownload", "Home", new { gameName = Model.Title })" alt="@Model.Title"></div>
-    </div>
-    <div class="StatusbarInfoitem">
-        <b>3766</b></br><small>uur gespeeld</small>
-    </div>
-    <div class="StatusbarInfoitem">
-        <b>17:58</b></br><small>last played</small>
-    </div>
-    <div class="StatusbarInfoitem">
-        &#9733;&#9733;&#9733;&#9734;&#9734;</br>
-        <small>Beoordeling</small>
-    </div>
-</div>
-<div class="Contentcontainer">
-    <div class="Contentcontainer60">
-        <div class="GameInfoitem">
-            <div class="titleclass">
-                <h2><img class="titleclassicon" , src="@Url.Action("RenderImage", new { id = Model.Id })" /> @Model.Title</h2>
-            </div>
-            <div class="Categoriescontainer">
-                <!-- Hier komt een foreach te staan met alle categorieën die gekoppeld zijn
-                <div class="Categoryitem">
-                    <category.id>
+<div class="container">
+    <div class="col-lg-12">
+        <div class="card mt-4" id="navbump">
+            <!--
+        <img class="mx-auto d-bloc" src="@Url.Action("RenderImage", new { id = Model.Id })" style="display:block;" height="400px" alt="">
+        -->
+            <img id="bannerbar" src="~/Image/logoship2.png" />
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <button type="button" style="margin-right:20px;" class="btn btn-primary" data-toggle="modal" data-target="#QRModal"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                    <div id="QRModal" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="@Url.Action("GetQrDownload", "Home", new { gameName = Model.Title })" alt="@Model.Title" class="img-responsive">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-right:20px"><span class="glyphicon glyphicon-time"></span> 69 uur gespeeld</p>
+                    <p style="margin-right:20px"><span class="glyphicon glyphicon-calendar"></span> Laatst gespeeld op 01/01/1970</p>
+                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>   4.0 sterren
                 </div>
-                 -->
-                <div class="Categoryitem">
-                    Quiz
-                </div>
-                <div class="Categoryitem">
-                    Multiplayer
-                </div>
-                <div class="Categoryitem">
-                    Politie
-                </div>
-            </div>
-            <h4>Description</h4>
-            <div class="description">
-                <p>@Model.Description</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis magna eget accumsan lobortis. Proin tincidunt elit quis lacus molestie, a fermentum tellus molestie. Proin nunc orci, dignissim sit amet nunc sed, fermentum tincidunt tellus. Nulla feugiat fringilla nunc vitae fringilla. Quisque sapien augue, dignissim vel pharetra vel, ultricies et enim. Nulla egestas ante faucibus erat semper fringilla. Aenean vulputate consectetur sapien, quis pulvinar elit ultrices vel. Sed auctor ut neque eget pulvinar. Suspendisse auctor erat eu sem euismod, sed cursus leo volutpat. Nam mauris orci, condimentum vel ornare sed, aliquam id ipsum. Nullam at libero non diam ullamcorper consequat et sed velit. Nunc aliquam vestibulum est quis pretium. Suspendisse sed aliquam lorem, sit amet pulvinar nisl.</p>
-                <p>Sed bibendum nisi quis nulla rhoncus consequat. Nulla pellentesque interdum sem non tincidunt. Cras hendrerit ultrices orci at mattis. Aenean tristique vestibulum efficitur. Maecenas ullamcorper lorem nec metus egestas imperdiet. Vivamus in sodales nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam libero elit, vulputate id erat lobortis, gravida consequat turpis. Pellentesque orci dui, cursus id lacinia ac, sodales nec enim. In turpis dui, sodales ac massa eget, dignissim finibus nisi. Morbi mollis dapibus quam, id malesuada erat dignissim a. Nam iaculis elementum enim, sed porta lacus. Maecenas lectus orci, porttitor viverra felis sed, tincidunt efficitur odio. Maecenas auctor mollis dictum.</p>
-                <p>Vestibulum aliquet neque et orci pretium accumsan. Maecenas tristique vitae mauris vel posuere. Vivamus sagittis, nisl ac luctus commodo, dui dui faucibus ligula, quis cursus ligula orci nec orci. Praesent porta imperdiet blandit. Pellentesque nec libero at purus feugiat sagittis. Aenean a dictum eros, vel luctus neque. Morbi blandit feugiat feugiat. Etiam arcu lorem, sollicitudin in lorem non, rutrum accumsan mi. Pellentesque quis euismod tortor. Cras vitae nibh egestas, consequat ligula et, auctor lectus. Nunc sit amet urna eget urna accumsan accumsan id lobortis mauris. Aenean at libero dui. Pellentesque accumsan iaculis felis, sed ultrices nisl tempus vel. Praesent porta dignissim augue, vel pellentesque nibh aliquet vel. Praesent vel dolor egestas, facilisis tortor a, malesuada nisi.</p>
-                <p>Sed dapibus ex in mattis iaculis. Cras a congue tortor. Donec non accumsan ipsum, quis vehicula felis. Donec orci risus, molestie vitae pellentesque nec, mollis vel elit. Fusce consequat purus eu nibh consequat, ut varius elit malesuada. Quisque a gravida lacus. Ut posuere tincidunt mi eu pretium. Suspendisse ullamcorper felis sit amet elit tincidunt, vitae consequat elit condimentum. Duis pulvinar orci eget nisi aliquet lobortis. Etiam sollicitudin lacinia dolor, a cursus mauris suscipit id. Morbi scelerisque eu nisi eu mollis. Morbi lobortis lacinia odio, sit amet porttitor quam iaculis fermentum. Aliquam nunc lorem, maximus eget aliquet sed, venenatis vel mauris. Nunc hendrerit imperdiet mauris vitae mollis.</p>
-                <p>Nam rutrum odio odio, sed blandit nisi faucibus id. Ut id metus libero. Nullam ac tristique odio, in aliquam tortor. Cras auctor ex eget tellus semper, commodo porta velit fringilla. Etiam interdum aliquet risus, vel vestibulum felis posuere sit amet. Fusce consequat felis eu enim facilisis commodo a cursus neque. Etiam dapibus nulla sit amet aliquet ornare.</p>
             </div>
         </div>
-    </div>
-    <div class="Contentcontainer30">
-        <div class="friendlistcontainer">
-            <h4>Vrienden</h4>
-            <!-- Hier komt een foreach te staan met alle vrienden
-            <div class="frienditem">
-                <category.id>
+        <!-- /.card -->
+        <div class="card card-outline-secondary my-4" style="margin-top:24px;">
+            <div class="card-header">
+                <h3 class="titleclass"><img src="@Url.Action("RenderImage", new { id = Model.Id })" />@Model.Title</h3>
+                <span class="badge badge-primary">Trivia</span>
+                <span class="badge badge-success">Multiplayer</span>
+                <span class="badge badge-warning">Rolgebaseerd</span>
             </div>
-             -->
-            <div class="frienditem">
-                Karel
-            </div>
-            <div class="frienditem">
-                Bert
-            </div>
-            <div class="frienditem">
-                Ernie
-            </div>
-            <div class="frienditem">
-                Kees
-            </div>
-            <div class="frienditem">
-                Barry Bakvis
+            <div class="card-body">
+                <p class="card-text">@Model.Description</p>
             </div>
         </div>
-        <div class="statisticscontainer">
-            <h4>stats</h4>
-            <!-- Hier komen statistieken te staan
-            <div class="statistics">
-                stats
+        <div class="card card-outline-secondary my-4" style="margin-top:24px;">
+            <div class="card-header">
+                @Model.Title Nieuws en Updates.
             </div>
-             -->
-            <div class="statistics">
-                Kogels afgevuurd: 3</br>
-                Mensen geredt: 15</br>
-                Piefjes gepaft: 293</br>
-                Onzin statistieken: 0</br>
-                Kaas gegeten: 17</br>
+            <div class="card-body">
+                <p class="card-title">Update: 14</p>
+                <p class="card-text">
+                    Update 14 voor @Model.Title is nu uit!
+                    Maak kennis met:
+                    <ul>
+                        <li>Nieuwe characters: Piraty Pete & Waterrat Willem</li>
+                        <li>Meer vragen.</li>
+                        <li>Nieuwe Categorie: AVG wet.</li>
+                        <li>De app heeft nu voicechat.</li>
+                        <li>Bugfix: je schip zinkt nu!</li>
+                        <li>Bugfix: Spelfouten in 384 vragen en antwoorden gefixed.</li>
+                        <li>Het Kerst evenement gaat nu van starts, Periode loopt tot 20 december.</li>
+                    </ul>
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 1/12/19</small>
+                <hr>
+                <p class="card-title">Kerst evenement</p>
+                <p class="card-text">
+                    De Kerst periode komt er weer aan, maak u klaar voor een speciaal Trivia evenement waar u kans maakt op een gebrade eend van 7 Kilo en een fles 15 jaar oude wijn!
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 17/11/19</small>
+                <hr>
+                <p class="card-title">Update: 13.2</p>
+                <p class="card-text">
+                    Update 13.2 voor @Model.Title is nu uit!
+                    Maak kennis met:
+                    <ul>
+                        <li>Meer vragen.</li>
+                        <li>Bugfixes.</li>
+                        <li>Preparaties voor Kerst.</li>
+                    </ul>
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 27/10/19</small>
+            </div>
+        </div>
+        <div class="card card-outline-secondary my-4" style="margin-top:24px;">
+            <div class="card-header">
+                Collega's die @Model.Title spelen
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Model.Description</p>
+                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                <hr>
+                <a href="#" class="btn btn-success">Leave a Review</a>
             </div>
         </div>
     </div>

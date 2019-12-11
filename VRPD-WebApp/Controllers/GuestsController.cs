@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using VRPDWebApp.db;
-using VRPDWebApp.Models;
-using VRPDWebApp.Utils;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class GuestsController : ApiController
     {
@@ -14,6 +12,7 @@ namespace VRPDWebApp.Controllers
 
         public IQueryable<Guest> Get() => db.Guest;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         public IHttpActionResult Post(byte[] raw)
         {
             try

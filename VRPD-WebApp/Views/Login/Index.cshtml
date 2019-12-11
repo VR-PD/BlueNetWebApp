@@ -14,13 +14,39 @@
 <body>
     <div class="qr-container">
         <img src="~/Image/bluenet hd.png" width="684" />
-        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[VRPDWebApp.STATICS.VISITORKEYSTR]" /></div>
+        <div class="qr-login"><img src="@Url.Action("GetQrCode", "Login")" alt="@Session[BlueNetWebApp.Statics.VisitorkeyStr]" /></div>
 
-        <input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@Url.Action("Overview", "Home")'" />
+        <!--<input class="self-start qr-btn" type="button" value="Login" onclick="location.href='@Url.Action("Index", "Home")'" />
         <label for="app-link-qr" class="qr-btn self-end">Mobile App</label>
         <input class="qr-app-btn" id="app-link-qr" type="checkbox" />
 
-        <div class="self-end toggle"><img src="@Url.Action("GetQrDownload", "Login")" /></div>
+        <div class="self-end toggle"><img src="@Url.Action("GetQrDownload", "Login")" /></div>-->
+
+        <div style="display:inline-block;">
+            <button type="button" class="btn btn-primary btn-lg buton" onclick="location.href='@Url.Action("Index", "Home")'" style="float:left;">Login</button>
+            <button type="button" style="float:right;padding-right: 50px;padding-left: 30px;width: 147px;" class="btn btn-primary btn-lg buton" data-toggle="modal" data-target="#QRModal">Mobile App</button>
+            @*<div id="GQRModal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img src="@Url.Action("GetQrDownload", "Login")" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <div id="QRModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body" style="position:absolute;">
+                            <img src="@Url.Action("GetQrDownload", "Login")" alt="BlueNet Scanner" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

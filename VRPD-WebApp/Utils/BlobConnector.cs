@@ -3,7 +3,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Web.Configuration;
 
-namespace VRPDWebApp.Utils
+namespace BlueNetWebApp
 {
     public class BlobConnector
     {
@@ -19,6 +19,7 @@ namespace VRPDWebApp.Utils
             blobClient = new CloudBlobClient(blobUri, new StorageCredentials("vrpdgamestore", key));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5377:Use Container Level Access Policy", Justification = "<Pending>")]
         public Uri GetGameSAS(string gameName)
         {
             CloudBlobContainer container = blobClient.GetContainerReference("vrpdgames");
@@ -32,6 +33,7 @@ namespace VRPDWebApp.Utils
             return new Uri(blob.Uri, blob.GetSharedAccessSignature(policy));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5377:Use Container Level Access Policy", Justification = "<Pending>")]
         public Uri GetScannerSAS()
         {
             CloudBlobContainer container = blobClient.GetContainerReference("publicread");

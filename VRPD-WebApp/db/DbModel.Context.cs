@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VRPDWebApp.db
+namespace BlueNetWebApp.db
 {
     using System;
     using System.Data.Entity;

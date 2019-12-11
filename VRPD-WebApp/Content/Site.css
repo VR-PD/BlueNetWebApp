@@ -15,7 +15,6 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -50,196 +49,35 @@ textarea {
     z-index: 1;
 }
 
-.dl-qr-btn {
-    background-color: #004681;
+.vertihr {
     border: none;
-    color: white;
-    padding: 1vh 1vw;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1;
+    border-left: 1px solid hsla(200, 10%, 50%,100);
+    height: 100vh;
+    width: 1px;
 }
 
-/*Game Info page start*/
-/*Game Banner*/
-.Bannerbar {
-    width: 100%;
-    height: 25%;
-}
-
-.Bannerbar img {
-    width: auto;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-/*Game Info page Status bar*/
-.Statusbarcontainer {
-    font-size: 14px;
-    list-style: none;
-    margin: 0 0 2% 0;
-    background: #DCDCDC;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: flex-start;
-    height: 8%;
-    width: 100%;
-    flex-direction: row;
-}
-
-/*Game Info page download button*/
-.StatusbarDownloaditem {
-    order: 1;
-    width: 10%;
-    height: 100%;
-    flex-basis: min-content;
-    background-color: #004681;
-}
-
-/*Game Info page quick info*/
-.StatusbarInfoitem {
-    order: 2;
-    text-align: center;
-    color: dimgrey;
-    width: auto;
-    height: 100%;
-    padding: 0px 25px
-}
-
-/*Game Info page general content container*/
-.Contentcontainer {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: #f2f2f2;
-    justify-content: space-evenly;
-}
-
-.Contentcontainer60 {
-    width: 60%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 1%;
-}
-
-.Contentcontainer30 {
-    width: 30%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 1%;
-}
-
-/*Game Info page general game info*/
-.GameInfoitem {
-    order: 1;
-    height: 370px;
-    width: 100%;
-    padding: 5px;
-    margin: 1%;
-    background-color: #9191916b;
-    border-radius: 5px;
-}
-
-/*Game Info page title+image*/
 .titleclass {
-    height:50px;
-    width: 100%;
+    margin: 0;
 }
 
-.titleclass img {
-    width: 50px;
-    height: 50px;
+    .titleclass img {
+        width: 50px;
+        height: 50px;
+    }
+
+#navbump {
+    margin-top: 50px;
 }
 
-/*Game Info page categories*/
-.Categoriescontainer {
-    display: flex;
-    flex-direction: row;
-    width: auto;
-    height: 5%;
-    margin-bottom: 25px;
+.buton {
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.Categoryitem {
-    order: 1;
-    font-size: 8px;
-    width: auto;
-    height: 15px;
-    background-color: #4682b457;
-    border-radius: 5px;
-    padding: 2px 3px;
-    margin: 0px 2px;
+.modellen {
+    position: absolute;
 }
-
-/*Game Info page description-long*/
-.description {
-    height: 200px;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-/*Game Info page friendlist*/
-.friendlistcontainer {
-    order: 3;
-    height: 185px;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin: 1%;
-    padding: 5px;
-    background-color: #9191916b;
-    border-radius: 5px;
-}
-
-/*Game Info page friends*/
-.frienditem {
-    order: 1;
-    font-size: 12px;
-    width: auto;
-    height: 48px;
-    border: 2px ridge steelblue;
-    border-radius: 5px;
-    padding: 1px 3px;
-    margin: 5px 2px;
-}
-
-/*Game Info page friendlist*/
-.statisticscontainer {
-    order: 2;
-    height: 185px;
-    width: 100%;
-    margin: 1%;
-    padding: 5px;
-    background-color: #9191916b;
-    border-radius: 5px;
-}
-
-/*Game Info page friends*/
-.statistics {
-    order: 1;
-    font-size: 12px;
-    width: auto;
-    height: auto;
-    padding: 1px 3px;
-    margin: 5px 2px;
-}
-/*Game Info page end*/
 
 .self-start {
     align-self: flex-start;
@@ -257,10 +95,6 @@ textarea {
     visibility: hidden;
 }
 
-.qr-dl-btn {
-    visibility: hidden;
-}
-
 /*#region Toggle download qr */
 
 .toggle {
@@ -268,17 +102,20 @@ textarea {
     transition: opacity 0.8s linear;
 }
 
-.toggle img {
-    width: 300%;
-    height: auto;
+    .toggle img {
+        width: 50%;
+        height: auto;
+    }
+
+#bannerbar {
+    height: 100%;
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
 }
 
 .qr-app-btn[type="checkbox"]:checked + div {
-    opacity: 1;
-    border: none;
-}
-
-.qr-dl-btn[type="checkbox"]:checked + div {
     opacity: 1;
     border: none;
 }

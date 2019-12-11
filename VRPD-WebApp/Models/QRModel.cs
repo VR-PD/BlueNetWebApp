@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Globalization;
 
-namespace VRPDWebApp.Models
+namespace BlueNetWebApp
 {
     /// <summary>
     /// A model class to retrieve all the properties from a read QR code and to prepare to send away again as a object array
@@ -79,7 +80,7 @@ namespace VRPDWebApp.Models
 
         public override string ToString()
         {
-            return $"Keynum: {Convert.ToBase64String(keynum)}\nCreation: {Created.ToString()}\nUserID: {UserID}";
+            return $"Keynum: {Convert.ToBase64String(keynum)}\nCreation: {Created.ToString(CultureInfo.CurrentCulture)}\nUserID: {UserID}";
         }
     }
 }

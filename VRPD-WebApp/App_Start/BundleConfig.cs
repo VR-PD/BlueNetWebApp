@@ -1,13 +1,21 @@
-﻿using System.Web.Optimization;
+﻿using System;
+using System.Web.Optimization;
 
-namespace VRPDWebApp
+namespace BlueNetWebApp
 {
-    public class BundleConfig
+    public sealed class BundleConfig
     {
+        private BundleConfig()
+        {
+        }
+
         public static void RegisterBundles(BundleCollection bundles)
         {
+            if (bundles == null)
+                throw new ArgumentNullException(nameof(bundles));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-3.4.1.js"));
+                            "~/Scripts/jquery-3.4.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

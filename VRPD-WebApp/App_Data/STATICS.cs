@@ -1,8 +1,8 @@
-﻿namespace VRPDWebApp
+﻿namespace BlueNetWebApp
 {
-    public static class STATICS
+    public static class Statics
     {
-        public const string VISITORKEY = "verification-key";
-        public const string VISITORKEYSTR = "verification-key-tostring";
+        public const string Visitorkey = "verification-key";
+        public const string VisitorkeyStr = "verification-key-tostring";
     }
 }

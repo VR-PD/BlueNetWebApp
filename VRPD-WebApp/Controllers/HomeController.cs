@@ -2,17 +2,16 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using VRPDWebApp.db;
-using VRPDWebApp.Utils;
+using BlueNetWebApp.db;
 
-namespace VRPDWebApp.Controllers
+namespace BlueNetWebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly Entities db = new Entities();
 
-        [AllowAnonymous]
         [HttpGet]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
         public ActionResult GetQrDownload(string gameName)
         {
             using (QREncoder encoder = new QREncoder())
@@ -26,19 +25,13 @@ namespace VRPDWebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(db.GameOverview.ToList());
         }
 
         [HttpGet]
         public ActionResult Info(int id)
         {
             return View(db.GameOverview.Find(id));
-        }
-
-        [HttpGet]
-        public ActionResult Overview()
-        {
-            return View(db.GameOverview.ToList());
         }
 
         [HttpGet]
