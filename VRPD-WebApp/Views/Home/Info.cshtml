@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="col-lg-12">
-        <div class="row">
-        <div class="card my-4" id="navbump">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card" id="navbump">
             <!--
             <img class="mx-auto d-bloc" src="@Url.Action("RenderImage", new { id = Model.Id })" style="display:block;" height="400px" alt="">
             -->
@@ -31,95 +30,102 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<!-- /.card -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card my-4">
+            <div class="card-header">
+                <h3 class="titleclass"><img src="@Url.Action("RenderImage", new { id = Model.Id })" />@Model.Title</h3>
+                <span class="badge badge-primary">Trivia</span>
+                <span class="badge badge-success">Multiplayer</span>
+                <span class="badge badge-warning">Rolgebaseerd</span>
             </div>
-        <!-- /.card -->
-        <div class="row">
-            <div class="card my-4">
-                <div class="card-header">
-                    <h3 class="titleclass"><img src="@Url.Action("RenderImage", new { id = Model.Id })" />@Model.Title</h3>
-                    <span class="badge badge-primary">Trivia</span>
-                    <span class="badge badge-success">Multiplayer</span>
-                    <span class="badge badge-warning">Rolgebaseerd</span>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">@Model.Description</p>
-                </div>
-            </div>
-            </div>
-        <div class="row">
-            <div class="card-deck my-4">
-                <div class="card">
-                    <div class="card-header">
-                        @Model.Title Nieuws en Updates.
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title">Update: 14</p>
-                        <p class="card-text">
-                            Update 14 voor @Model.Title is nu uit!
-                            Maak kennis met:
-                            <ul>
-                                <li>Nieuwe characters: Piraty Pete & Waterrat Willem</li>
-                                <li>Meer vragen.</li>
-                                <li>Nieuwe Categorie: AVG wet.</li>
-                                <li>De app heeft nu voicechat.</li>
-                                <li>Bugfix: je schip zinkt nu!</li>
-                                <li>Bugfix: Spelfouten in 384 vragen en antwoorden gefixed.</li>
-                                <li>Het Kerst evenement gaat nu van starts, Periode loopt tot 20 december.</li>
-                            </ul>
-                        </p>
-                        <small class="text-muted">Posted by Adminman16 on 1/12/19</small>
-                        <hr>
-                        <p class="card-title">Kerst evenement</p>
-                        <p class="card-text">
-                            De Kerst periode komt er weer aan, maak u klaar voor een speciaal Trivia evenement waar u kans maakt op een gebrade eend van 7 Kilo en een fles 15 jaar oude wijn!
-                        </p>
-                        <small class="text-muted">Posted by Adminman16 on 17/11/19</small>
-                        <hr>
-                        <p class="card-title">Update: 13.2</p>
-                        <p class="card-text">
-                            Update 13.2 voor @Model.Title is nu uit!
-                            Maak kennis met:
-                            <ul>
-                                <li>Meer vragen.</li>
-                                <li>Bugfixes.</li>
-                                <li>Preparaties voor Kerst.</li>
-                            </ul>
-                        </p>
-                        <small class="text-muted">Posted by Adminman16 on 27/10/19</small>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Top 10 high score
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="background-color:#FFD700;color:white;">1. Barry Bakvis</li>
-                            <li class="list-group-item" style="background-color:#c0c0c0;">2. Victor Oorbeeld</li>
-                            <li class="list-group-item" style="background-color:#cd7f32;color:white;">3. Marnix Ober</li>
-                            <li class="list-group-item">4. Bram Pieters</li>
-                            <li class="list-group-item">5. Michael van der Knoop</li>
-                            <li class="list-group-item">6. Mark Rutte</li>
-                            <li class="list-group-item">7. Thierry Baudet</li>
-                            <li class="list-group-item">8. Vladimir Putin</li>
-                            <li class="list-group-item">9. Willy</li>
-                            <li class="list-group-item">10. Donald Trump</li>
-                        </ul>
-                    </div>
-                </div>
-                </div>
-          
-            <div class="card my-4">
-                <div class="card-header">
-                    Uw gebruikersstatistieken @Model.Title
-                </div>
-                <div class="card-body">
-                    <iframe width="500" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTIRTbzrNhyKHd8E0Vh1hluMtKR6bDZT2VsTusYY-8b2lCcXg81R6tAbMVhGT_z2ZBVyA5E4iBNmkKq/pubchart?oid=207132777&amp;format=interactive"></iframe>
-                    <iframe width="500" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTIRTbzrNhyKHd8E0Vh1hluMtKR6bDZT2VsTusYY-8b2lCcXg81R6tAbMVhGT_z2ZBVyA5E4iBNmkKq/pubchart?oid=205447939&amp;format=interactive"></iframe>
-                </div>
+            <div class="card-body">
+                <p class="card-text">@Model.Description</p>
             </div>
         </div>
-        <div class="row">
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                @Model.Title Nieuws en Updates.
+            </div>
+            <div class="card-body">
+                <p class="card-title">Update: 14</p>
+                <p class="card-text">
+                    Update 14 voor @Model.Title is nu uit!
+                    Maak kennis met:
+                    <ul>
+                        <li>Nieuwe characters: Piraty Pete & Waterrat Willem</li>
+                        <li>Meer vragen.</li>
+                        <li>Nieuwe Categorie: AVG wet.</li>
+                        <li>De app heeft nu voicechat.</li>
+                        <li>Bugfix: je schip zinkt nu!</li>
+                        <li>Bugfix: Spelfouten in 384 vragen en antwoorden gefixed.</li>
+                        <li>Het Kerst evenement gaat nu van starts, Periode loopt tot 20 december.</li>
+                    </ul>
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 1/12/19</small>
+                <hr>
+                <p class="card-title">Kerst evenement</p>
+                <p class="card-text">
+                    De Kerst periode komt er weer aan, maak u klaar voor een speciaal Trivia evenement waar u kans maakt op een gebrade eend van 7 Kilo en een fles 15 jaar oude wijn!
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 17/11/19</small>
+                <hr>
+                <p class="card-title">Update: 13.2</p>
+                <p class="card-text">
+                    Update 13.2 voor @Model.Title is nu uit!
+                    Maak kennis met:
+                    <ul>
+                        <li>Meer vragen.</li>
+                        <li>Bugfixes.</li>
+                        <li>Preparaties voor Kerst.</li>
+                    </ul>
+                </p>
+                <small class="text-muted">Posted by Adminman16 on 27/10/19</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Top 10 high score
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color:#FFD700;color:white;">1. Barry Bakvis</li>
+                    <li class="list-group-item" style="background-color:#c0c0c0;">2. Victor Oorbeeld</li>
+                    <li class="list-group-item" style="background-color:#cd7f32;color:white;">3. Marnix Ober</li>
+                    <li class="list-group-item">4. Bram Pieters</li>
+                    <li class="list-group-item">5. Michael van der Knoop</li>
+                    <li class="list-group-item">6. Mark Rutte</li>
+                    <li class="list-group-item">7. Thierry Baudet</li>
+                    <li class="list-group-item">8. Vladimir Putin</li>
+                    <li class="list-group-item">9. Willy</li>
+                    <li class="list-group-item">10. Donald Trump</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card my-4">
+            <div class="card-header">
+                Uw gebruikersstatistieken @Model.Title
+            </div>
+            <div class="card-body">
+                <iframe width="500" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTIRTbzrNhyKHd8E0Vh1hluMtKR6bDZT2VsTusYY-8b2lCcXg81R6tAbMVhGT_z2ZBVyA5E4iBNmkKq/pubchart?oid=207132777&amp;format=interactive"></iframe>
+                <iframe width="500" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTIRTbzrNhyKHd8E0Vh1hluMtKR6bDZT2VsTusYY-8b2lCcXg81R6tAbMVhGT_z2ZBVyA5E4iBNmkKq/pubchart?oid=205447939&amp;format=interactive"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
         <div class="card my-4">
             <div class="card-header">
                 Specificaties voor @Model.Title
@@ -164,7 +170,7 @@
                 </p>
                 <hr>
             </div>
-            </div>
         </div>
     </div>
 </div>
+
