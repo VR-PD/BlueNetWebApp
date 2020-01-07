@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BlueNetWebApp.db;
+using System;
 using System.Linq;
 using System.Web.Mvc;
-using BlueNetWebApp.db;
 
 namespace BlueNetWebApp
 {

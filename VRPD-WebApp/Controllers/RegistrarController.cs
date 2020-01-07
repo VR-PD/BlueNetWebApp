@@ -1,34 +1,30 @@
-﻿using System;
-using System.Web.Http;
-using BlueNetWebApp.db;
-
-namespace BlueNetWebApp.Controllers
+﻿namespace BlueNetWebApp.Controllers
 {
-    public class RegistrarController : ApiController
-    {
-        private readonly Entities db = new Entities();
+    //public class RegistrarController : ApiController
+    //{
+    //    private readonly Entities db = new Entities();
 
-        [HttpPost]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>")]
-        public IHttpActionResult RegisterAgent(Registration registration)
-        {
-            try
-            {
-                db.Registration.Add(new db.Registration()
-                {
-                    deviceID = registration.DID,
-                    userName = registration.UserName
-                });
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return NotFound();
-            }
-            return Ok();
-        }
-    }
+    //    [HttpPost]
+    //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+    //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>")]
+    //    public IHttpActionResult RegisterAgent(Registration registration)
+    //    {
+    //        try
+    //        {
+    //            db.Registration.Add(new db.Registration()
+    //            {
+    //                deviceID = registration.DID,
+    //                userName = registration.UserName
+    //            });
+    //            db.SaveChanges();
+    //        }
+    //        catch (Exception)
+    //        {
+    //            return NotFound();
+    //        }
+    //        return Ok();
+    //    }
+    //}
 
     /// <summary>
     /// Model for recieving post data containing Device ID

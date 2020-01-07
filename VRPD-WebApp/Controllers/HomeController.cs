@@ -1,8 +1,8 @@
-﻿using QRCoder;
+﻿using BlueNetWebApp.db;
+using QRCoder;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using BlueNetWebApp.db;
 
 namespace BlueNetWebApp.Controllers
 {
