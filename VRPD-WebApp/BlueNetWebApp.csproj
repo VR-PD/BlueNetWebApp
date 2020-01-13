@@ -305,7 +305,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrarController.cs" />
-    <Compile Include="Controllers\SecretController.cs" />
     <Compile Include="db\dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
