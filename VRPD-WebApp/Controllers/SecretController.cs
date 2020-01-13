@@ -7,7 +7,7 @@ namespace BlueNetWebApp.Controllers
     /// </summary>
     public class SecretController : Controller
     {
-        private const string flag = "v=-50NdPawLVY";
+        private const string flag = "***********";
 
         /// <summary>
         /// Flag for pentest hidden behind Authorizer
